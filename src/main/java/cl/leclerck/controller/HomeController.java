@@ -20,6 +20,17 @@ public class HomeController {
 	public String about() {
 		return "home/about";
 	}
+	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin/index-admin";
+	}
+	
+	@GetMapping("/book")
+	public String showBook() {
+		//single?id
+		return "home/single";
+	}
 }
 
 

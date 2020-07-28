@@ -38,6 +38,7 @@
 											<h3 class="mb-2">
 												<a href="single.jsp">A Loving Heart is the Truest Wisdom</a>
 											</h3>
+											
 											<div class="meta-wrap">
 												<p class="meta">
 													<span><a href=""><i class="icon-calendar mr-2"></i>2019</a></span>
