@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/")
 public class HomeController {
-	 @GetMapping
-	    public String index(ModelMap mapa) {
-	        List<String> palabras = new ArrayList<>();
-	        
-	        palabras.add("foo");
-	        palabras.add("bar");
-	        
-	        mapa.put("palabras", palabras);
-	        
-	        return "usuarios/login";
-	    }
+	@GetMapping
+	public String index(ModelMap mapa) {
+		return "home/index";
+	}
+	//href siempre hace GET
+	@GetMapping("/about")
+	public String about() {
+		return "home/about";
+	}
 }
+
+
