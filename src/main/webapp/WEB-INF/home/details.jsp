@@ -35,6 +35,7 @@
 										<span><a href=""><i class="icon-folder-o mr-2"></i>N
 												Stars</a></span> <span><a href=""><i
 												class="icon-comment2 mr-2"></i>N Reviews</a></span>
+												<button type="button" class="btn btn-primary ml-4">Download Here</button>
 
 									</p>
 								</div>
@@ -44,11 +45,11 @@
 									</div>
 									<div class="col-lg-4">
 										<p>ISBN: 1234567890</p>
-										<p>Authors:
-										<ul>
-											<li>Author One</li>
-										</ul>
-										</p>
+										<p>Authors:</p>
+											<ul>
+												<li>Author One</li>
+											</ul>
+										
 									</div>
 								</div>
 								<p>Molestiae cupiditate inventore animi, maxime sapiente

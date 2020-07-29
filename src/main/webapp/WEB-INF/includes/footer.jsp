@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<div class="colorlib-footer mb-5 py-3">
-	<h1 id="colorlib-logo" class="mb-5">
-		<a href="index.jsp"
+<div class="colorlib-footer py-3">
+	<h1 id="colorlib-logo" class="">
+		<a href="/"
 			style="background-image: url(../images/avocado.jpg);">Vegan<span>Library</span></a>
 	</h1>
 	<p class="pfooter">

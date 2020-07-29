@@ -27,7 +27,7 @@
 							placeholder="Password">
 					</div>
 					<button type="submit" class="btn btn-primary">Log in</button>
-					<a href="signin.jsp">or click here to sign in</a>
+					<a href="../signin">or click here to sign in</a>
 				</form>
 			</nav>
 
@@ -42,40 +42,9 @@
 				<div class="container">
 					<div class="row d-flex">
 
-						<div id="carouselExampleSlidesOnly" class="carousel slide"
-							data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img class="d-block w-100" src="../images/pie.jpg"
-										alt="First slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/plum.jpg"
-										alt="Second slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/smoothie.jpg"
-										alt="Third slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/market.jpg"
-										alt="Third slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/olive-oil.jpg"
-										alt="Third slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/veg1.jpg"
-										alt="Third slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="../images/veg2.jpg"
-										alt="Third slide">
-								</div>
-							</div>
-						</div>
-
+						<!-- 			CAROUSEL -->
+						<jsp:include page="../includes/carousel.jsp" />
+						<!-- 			CAROUSEL#-->
 
 					</div>
 				</div>

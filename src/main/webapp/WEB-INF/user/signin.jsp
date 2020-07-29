@@ -21,14 +21,14 @@
 							Picture</span>
 						</label>
 						<div class="col-sm-2"></div>
-						<div class="col-sm-7">
+						<div class="col-sm-8">
 							<input type="file" class="form-control" id="pic" name="pic">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
 						<div class="col-sm-2"></div>
-						<div class="col-sm-7">
+						<div class="col-sm-8">
 							<input type="text" class="form-control" id="inputUsername"
 								placeholder="Username">
 						</div>
@@ -36,7 +36,7 @@
 					<div class="form-group row">
 						<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-2"></div>
-						<div class="col-sm-7">
+						<div class="col-sm-8">
 							<input type="email" class="form-control" id="inputEmail3"
 								placeholder="Email">
 						</div>
@@ -44,13 +44,13 @@
 					<div class="form-group row">
 						<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-2"></div>
-						<div class="col-sm-7">
+						<div class="col-sm-8">
 							<input type="password" class="form-control" id="inputPassword3"
 								placeholder="Password">
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Sign in</button>
-					<a href="">or click here to log in</a>
+					<a href="auth/login">or click here to log in</a>
 				</form>
 			</nav>
 
@@ -63,7 +63,9 @@
 		<div id="colorlib-main">
 			<section class="ftco-section ftco-no-pt ftco-no-pb">
 				<div class="container">
-					<div class="row d-flex">INSERT IMAGE</div>
+					<!-- 			CAROUSEL -->
+					<jsp:include page="../includes/carousel.jsp" />
+					<!-- 			CAROUSEL#-->
 				</div>
 			</section>
 		</div>

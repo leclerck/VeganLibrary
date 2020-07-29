@@ -1,8 +1,5 @@
 package cl.leclerck.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +20,13 @@ public class HomeController {
 	
 	@GetMapping("/admin")
 	public String admin() {
-		return "admin/index-admin";
+		return "admin/userMaintainer";
 	}
 	
 	@GetMapping("/book")
 	public String showBook() {
 		//single?id
-		return "home/single";
+		return "home/details";
 	}
 
 }

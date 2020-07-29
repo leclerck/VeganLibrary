@@ -5,11 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/auth")
-public class LoginController {
+@RequestMapping(value = "/user")
+public class UserController {
 
-	@GetMapping("/login")
+	@GetMapping("/signin")
 	public String showLogin() {
-		return "login/login";
+		return "user/signin";
+	}
+
+	@GetMapping("index")
+	public String bookMaintainer() {
+		return "admin/userMaintainer";
+
 	}
 }
