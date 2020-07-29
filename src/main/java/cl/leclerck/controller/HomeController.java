@@ -31,6 +31,7 @@ public class HomeController {
 		//single?id
 		return "home/single";
 	}
+
 }
 
 
