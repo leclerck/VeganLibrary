@@ -8,13 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel>
 
 <title>Vegan Library - Book Maintainer</title>
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
-</head>
 
 <!-- CSS only -->
 <link rel="stylesheet"
@@ -26,7 +24,18 @@
 	href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.css" />
+<style type="text/css">
 
+.paginate_button {
+	padding: 0 !important;
+	
+}
+.page-item.active .page-link{
+	background-color: #1eafed !important;
+border-color: #1eafed !important;
+}
+</style>
+</head>
 
 <body>
 
@@ -47,11 +56,12 @@
 				<div class="container">
 					<div class="row d-flex">
 						<div class="col-xl-12 px-md-5 mt-5">
-							<div class = "mb-4">
-								<button type="button" onclick="location.href = '../user/index';" class="btn btn-secondary btn-lg disabled">User
+							<div class="mb-4">
+								<button type="button" onclick="location.href = '../users';"
+									class="btn btn-secondary btn-lg disabled">User
 									Maintainer</button>
-								<button type="button" onclick="location.href = '/book/index';" class="btn btn-primary btn-lg">Book
-									Maintainer</button>
+								<button type="button" onclick="location.href = 'books';"
+									class="btn btn-primary btn-lg">Book Maintainer</button>
 							</div>
 							<h3>Book Register</h3>
 							<form>
@@ -60,7 +70,8 @@
 									</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="file" class="form-control" id="picture" name="picture">
+										<input type="file" class="form-control" id="picture"
+											name="picture">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -83,28 +94,32 @@
 									<label for="author" class="col-sm-2 col-form-label">Author</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="text" class="form-control" id="author" name="author"
-											placeholder="Author">
+										<input type="text" class="form-control" id="author"
+											name="author" placeholder="Author">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="year" class="col-sm-2 col-form-label">Year</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="number" class="form-control" id="year" name="year"
-											placeholder="Year">
+										<input type="number" class="form-control" id="year"
+											name="year" placeholder="Year">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="description" class="col-sm-2 col-form-label">Description</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="text" class="form-control"
-											id="description" name="description" placeholder="Description">
+										<input type="text" class="form-control" id="description"
+											name="description" placeholder="Description">
 									</div>
 								</div>
-								<button type="submit" class="btn btn-primary btn-block">Register</button>
-								
+								<div class="row">
+									<div class="col-sm-4"></div>
+									<div class="col-sm-8">
+										<button type="submit" class="btn btn-primary btn-block">Register</button>
+									</div>
+								</div>
 							</form>
 							</br>
 

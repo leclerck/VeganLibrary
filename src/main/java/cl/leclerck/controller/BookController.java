@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/book")
+@RequestMapping("/")
 public class BookController {
 	
-	@GetMapping("index")
+	@GetMapping("/books")
 	public String bookMaintainer() {
 		return "admin/bookMaintainer";
 	}

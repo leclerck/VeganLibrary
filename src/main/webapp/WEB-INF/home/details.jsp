@@ -32,10 +32,18 @@
 								<div class="meta-wrap">
 									<p class="meta">
 										<span><a href=""><i class="icon-calendar mr-2"></i>2019</a></span>
-										<span><a href=""><i class="icon-folder-o mr-2"></i>N
-												Stars</a></span> <span><a href=""><i
+										<span><a href=""><i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star-half-alt"></i>
+										<i class="far fa-star"></i>
+												Stars</a></span> 
+												
+												
+												<span><a href=""><i
 												class="icon-comment2 mr-2"></i>N Reviews</a></span>
-												<button type="button" class="btn btn-primary ml-4">Download Here</button>
+										<button type="button" class="btn btn-primary ml-4">Download
+											Here</button>
 
 									</p>
 								</div>
@@ -46,10 +54,10 @@
 									<div class="col-lg-4">
 										<p>ISBN: 1234567890</p>
 										<p>Authors:</p>
-											<ul>
-												<li>Author One</li>
-											</ul>
-										
+										<ul>
+											<li>Author One</li>
+										</ul>
+
 									</div>
 								</div>
 								<p>Molestiae cupiditate inventore animi, maxime sapiente

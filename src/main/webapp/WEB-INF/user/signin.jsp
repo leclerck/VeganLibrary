@@ -6,6 +6,11 @@
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
+<style type="text/css">
+#colorlib-aside{
+padding-top: 2em !important;
+}
+</style>
 </head>
 
 <body>

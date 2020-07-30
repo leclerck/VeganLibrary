@@ -1,4 +1,4 @@
-package cl.leclerck.entity;
+package cl.leclerck.model.entity;
 
 public enum Role {
 

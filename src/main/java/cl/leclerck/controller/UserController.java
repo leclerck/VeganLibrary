@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/")
 public class UserController {
 
 	@GetMapping("/signin")
@@ -13,7 +13,7 @@ public class UserController {
 		return "user/signin";
 	}
 
-	@GetMapping("index")
+	@GetMapping("/users")
 	public String bookMaintainer() {
 		return "admin/userMaintainer";
 

@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel>
 
 <title>Vegan Library - User Maintainer</title>
 <!-- 			HEAD -->
@@ -47,10 +46,11 @@
 				<div class="container">
 					<div class="row d-flex">
 						<div class="col-xl-12 px-md-5 mt-5">
-							<div class = "mb-4">
-								<button type="button" onclick="location.href = '/user/index';" class="btn btn-primary btn-lg">User
-									Maintainer</button>
-								<button type="button" onclick="location.href = '../book/index';" class="btn btn-secondary btn-lg disabled">Book
+							<div class="mb-4">
+								<button type="button" onclick="location.href = 'users';"
+									class="btn btn-primary btn-lg">User Maintainer</button>
+								<button type="button" onclick="location.href = '../books';"
+									class="btn btn-secondary btn-lg disabled">Book
 									Maintainer</button>
 							</div>
 							<h3>Sign in</h3>
@@ -61,37 +61,43 @@
 									</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="file" class="form-control" id="avatar" name="avatar">
+										<input type="file" class="form-control" id="avatar"
+											name="avatar">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="username" class="col-sm-2 col-form-label">Username</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="text" class="form-control" id="username" name = "username"
-											placeholder="Username">
+										<input type="text" class="form-control" id="username"
+											name="username" placeholder="Username">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="email" class="col-sm-2 col-form-label">Email</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="email" class="form-control" id="email" name = "email"
-											placeholder="Email">
+										<input type="email" class="form-control" id="email"
+											name="email" placeholder="Email">
 									</div>
 								</div>
 								<div class="form-group row">
 									<label for="password" class="col-sm-2 col-form-label">Password</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="password" class="form-control"
-											id="password" name= "password" placeholder="Password">
+										<input type="password" class="form-control" id="password"
+											name="password" placeholder="Password">
 									</div>
 								</div>
-								<button type="submit" class="btn btn-primary btn-block">Sign in</button>
-								
+								<div class="row">
+									<div class="col-sm-4"></div>
+									<div class="col-sm-8">
+										<button type="submit" class="btn btn-primary btn-block">Sign
+											in</button>
+									</div>
+								</div>
 							</form>
-							</br>
+							<br>
 
 							<table class="table" id="myTable">
 								<thead>
@@ -127,11 +133,8 @@
 										<td>Otto</td>
 										<td>@mdo</td>
 									</tr>
-									</tr>
 								</tbody>
 							</table>
-							<!-- 							<button type="button" class="btn btn-primary">Primary</button> -->
-
 						</div>
 					</div>
 				</div>

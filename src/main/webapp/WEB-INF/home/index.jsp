@@ -36,14 +36,14 @@
 											style="background-image: url(../images/image_1.jpg);"></a>
 										<div class="text text-2 pl-md-4">
 											<h3 class="mb-2">
-												<a href="single.jsp">A Loving Heart is the Truest Wisdom</a>
+												<a href="book">A Loving Heart is the Truest Wisdom</a>
 											</h3>
 											
 											<div class="meta-wrap">
 												<p class="meta">
 													<span><a href=""><i class="icon-calendar mr-2"></i>2019</a></span>
-													<span><a href=""><i class="icon-folder-o mr-2"></i>N
-															Stars</a></span> <span><a href=""><i
+													<span><a href="">N <i class="fas fa-star mr-2"></i>
+															</a></span> <span><a href=""><i
 															class="icon-comment2 mr-2"></i>N Reviews</a></span>
 												</p>
 											</div>
