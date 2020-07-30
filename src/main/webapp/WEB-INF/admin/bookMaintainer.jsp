@@ -24,17 +24,19 @@
 	href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.css" />
-<style type="text/css">
 
-.paginate_button {
-	padding: 0 !important;
-	
+<style type="text/css">
+.paginate_button:hover {
+ 	border: solid #ffffff !important; 
+	background: #ffffff !important
 }
+
 .page-item.active .page-link{
 	background-color: #1eafed !important;
 border-color: #1eafed !important;
 }
 </style>
+
 </head>
 
 <body>
@@ -121,15 +123,20 @@ border-color: #1eafed !important;
 									</div>
 								</div>
 							</form>
-							</br>
+							<br>
 
 							<table class="table" id="myTable">
 								<thead>
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
+										<th scope="col">Id</th>
+										<th scope="col">Picture</th>
+										<th scope="col">ISBN</th>
+										<th scope="col">Name</th>
+										<th scope="col">Year</th>
+										<th scope="col">Author</th>
+										<th scope="col">Stars</th>
+										<th scope="col">Description</th>
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -138,11 +145,19 @@ border-color: #1eafed !important;
 										<td>Mark</td>
 										<td>Otto</td>
 										<td>@mdo</td>
+										<td>@mdo</td>
+										<td>@mdo</td>
+										<td>@mdo</td>
+										<td>@mdo</td>
 									</tr>
 									<tr>
 										<th scope="row">2</th>
 										<td>Jacob</td>
 										<td>Thornton</td>
+										<td>@fat</td>
+										<td>@fat</td>
+										<td>@fat</td>
+										<td>@fat</td>
 										<td>@fat</td>
 									</tr>
 									<tr>
@@ -150,13 +165,10 @@ border-color: #1eafed !important;
 										<td>Larry</td>
 										<td>the Bird</td>
 										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-									</tr>
+										<td>@twitter</td>
+										<td>@twitter</td>
+										<td>@twitter</td>
+										<td>@twitter</td>
 									</tr>
 								</tbody>
 							</table>

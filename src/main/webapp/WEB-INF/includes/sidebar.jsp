@@ -50,8 +50,8 @@
 		<ul class="tagcloud">
 			<a href="#" class="tag-cloud-link">animals</a>
 			<a href="#" class="tag-cloud-link">ethics</a>
-			<a href="#" class="tag-cloud-link">political</a>
-			<a href="#" class="tag-cloud-link">farming</a>
+			<a href="#" class="tag-cloud-link">health</a>
+			<a href="#" class="tag-cloud-link">environment</a>
 			<a href="#" class="tag-cloud-link">essay</a>
 			<a href="#" class="tag-cloud-link">nature</a>
 			<a href="#" class="tag-cloud-link">recipe</a>

@@ -26,6 +26,17 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.css" />
 
+<style type="text/css">
+.paginate_button:hover {
+ 	border: solid #ffffff !important; 
+	background: #ffffff !important
+}
+
+.page-item.active .page-link{
+	background-color: #1eafed !important;
+border-color: #1eafed !important;
+}
+</style>
 
 <body>
 
@@ -57,7 +68,7 @@
 							<form>
 								<div class="form-group row">
 									<label for="avatar" class="col-sm-2 col-form-label">Profile
-										Picture</span>
+										Picture
 									</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
@@ -102,10 +113,11 @@
 							<table class="table" id="myTable">
 								<thead>
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">First</th>
-										<th scope="col">Last</th>
-										<th scope="col">Handle</th>
+										<th scope="col">Id</th>
+										<th scope="col">Avatar</th>
+										<th scope="col">Username</th>
+										<th scope="col">Email</th>
+										<th scope="col">Password</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -114,11 +126,13 @@
 										<td>Mark</td>
 										<td>Otto</td>
 										<td>@mdo</td>
+										<td>@mdo</td>
 									</tr>
 									<tr>
 										<th scope="row">2</th>
 										<td>Jacob</td>
 										<td>Thornton</td>
+										<td>@fat</td>
 										<td>@fat</td>
 									</tr>
 									<tr>
@@ -126,12 +140,7 @@
 										<td>Larry</td>
 										<td>the Bird</td>
 										<td>@twitter</td>
-									</tr>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
+										<td>@twitter</td>
 									</tr>
 								</tbody>
 							</table>
