@@ -13,7 +13,7 @@
 		<h3 class="sidebar-heading">Categories</h3>
 		<ul class="categories">
 			<li><a href="#">Recipes <span>(N)</span></a></li>
-			<li><a href="#">Political <span>(N)</span></a></li>
+			<li><a href="#">Health <span>(N)</span></a></li>
 			<li><a href="#">Ethics <span>(N)</span></a></li>
 			<li><a href="#">Biology <span>(N)</span></a></li>
 		</ul>
@@ -61,8 +61,6 @@
 
 	<div class="sidebar-box ftco-animate">
 		<h3 class="sidebar-heading">Welcome</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-			Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus
-			aut.</p>
+		<p>This site was created by a vegan computer scientist who hopes to spread veganism to the world.</p>
 	</div>
 </div>

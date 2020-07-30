@@ -34,13 +34,12 @@
 						<div class="col-md-6 d-flex align-items-center">
 							<div class="text px-4 pt-5 pt-md-0 px-md-4 pr-md-5 ftco-animate">
 								<h2 class="mb-4">
-									I'm <span>Valentina Leclerck</span> a Vegan Computer Scientist
+									This is the <span>Vegan Library</span>
 								</h2>
-								<p>A small river named Duden flows by their place and
-									supplies it with the necessary regelialia. It is a
-									paradisematic country, in which roasted parts of sentences fly
-									into your mouth. It is a paradisematic country, in which
-									roasted parts of sentences fly into your mouth.</p>
+								<p>A small compilation of books that will broaden what you know about the practice of abstaining
+								from the use of animal products. The purpose of this library is to share 
+								the knowledge that exists around veganism and plant-based lifestyles. The topics go from 
+								ethics and political issues to health and environmental issues.</p>
 							</div>
 						</div>
 					</div>

@@ -119,7 +119,7 @@ border-color: #1eafed !important;
 								<div class="row">
 									<div class="col-sm-4"></div>
 									<div class="col-sm-8">
-										<button type="submit" class="btn btn-primary btn-block">Register</button>
+										<button type="submit" class="btn btn-primary btn-block">Save</button>
 									</div>
 								</div>
 							</form>
