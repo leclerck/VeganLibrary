@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Vegan Library - User Maintainer</title>
+<title>Vegan Library - Customer Maintainer</title>
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
@@ -59,7 +59,7 @@ border-color: #1eafed !important;
 						<div class="col-xl-12 px-md-5 mt-5">
 							<div class="mb-4">
 								<button type="button" onclick="location.href = 'users';"
-									class="btn btn-primary btn-lg">User Maintainer</button>
+									class="btn btn-primary btn-lg">Customer Maintainer</button>
 								<button type="button" onclick="location.href = '../books';"
 									class="btn btn-secondary btn-lg disabled">Book
 									Maintainer</button>

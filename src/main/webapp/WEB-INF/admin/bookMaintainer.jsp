@@ -60,7 +60,7 @@ border-color: #1eafed !important;
 						<div class="col-xl-12 px-md-5 mt-5">
 							<div class="mb-4">
 								<button type="button" onclick="location.href = '../users';"
-									class="btn btn-secondary btn-lg disabled">User
+									class="btn btn-secondary btn-lg disabled">Customer
 									Maintainer</button>
 								<button type="button" onclick="location.href = 'books';"
 									class="btn btn-primary btn-lg">Book Maintainer</button>
