@@ -1,9 +1,14 @@
 package cl.leclerck.model.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,4 +31,8 @@ public class Book {
 	@Setter @Getter double stars;
 	@Setter @Getter String description;
 	@Setter @Getter String pictureUrl;
+//	@Setter @Getter List<Review> reviews;  //es necesario? o buena idea?
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    private Review review;
 }

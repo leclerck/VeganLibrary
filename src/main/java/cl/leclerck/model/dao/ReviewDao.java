@@ -5,3 +5,4 @@ import cl.leclerck.model.entity.Review;
 
 public interface ReviewDao extends JpaRepository<Review, Integer> {
 }
+//

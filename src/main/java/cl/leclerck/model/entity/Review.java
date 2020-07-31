@@ -33,10 +33,10 @@ public class Review {
 	@Setter @Getter Integer bookId;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "id") //Es necesario?
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bookId", referencedColumnName = "id")
+    @JoinColumn(name = "bookId", referencedColumnName = "id") //Es necesario?
     private Book book;
 }

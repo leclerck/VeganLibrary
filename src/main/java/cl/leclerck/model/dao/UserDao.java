@@ -5,3 +5,4 @@ import cl.leclerck.model.entity.User;
 
 public interface UserDao extends JpaRepository<User, Integer> {
 }
+//
