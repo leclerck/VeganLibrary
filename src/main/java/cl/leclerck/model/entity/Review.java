@@ -32,7 +32,7 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("user_id")
     @JoinColumn(name = "user_id")
-    private User user;
+    private Customer user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("book_id")

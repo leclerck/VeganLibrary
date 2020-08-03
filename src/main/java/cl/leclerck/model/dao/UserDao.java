@@ -1,6 +1,6 @@
 package cl.leclerck.model.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import cl.leclerck.model.entity.User;
+import cl.leclerck.model.entity.Customer;
 
-public interface UserDao extends JpaRepository<User, Integer> {}
+public interface UserDao extends JpaRepository<Customer, Integer> {}

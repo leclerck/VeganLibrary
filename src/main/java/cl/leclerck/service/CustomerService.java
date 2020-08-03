@@ -1,4 +1,4 @@
-package cl.leclerck.services;
+package cl.leclerck.service;
 
 import java.util.List;
 
@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cl.leclerck.model.dao.UserDao;
-import cl.leclerck.model.entity.User;
+import cl.leclerck.model.entity.Customer;
 
 @Service
-public class UserService {
+public class CustomerService {
 
     @Autowired
     private UserDao dao;
 
     @Transactional(readOnly = true)
-    public List<User> obtenerTodos(){
+    public List<Customer> obtenerTodos(){
         return dao.findAll();
     }
     

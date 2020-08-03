@@ -41,7 +41,7 @@
 									<h1
 										class="mr-3 pr-3 align-top border-right inline-block align-content-center">500</h1>
 									<div class="inline-block align-middle">
-										<h2 class="font-weight-normal lead" id="desc">Internal Server Error</h2>
+										<h2 class="font-weight-normal lead" id="desc">Internal Server Error. Maybe the file you are trying to upload is too large.</h2>
 									</div>
 								</div>
 								<!--1er POST-->

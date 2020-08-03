@@ -20,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class User {
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

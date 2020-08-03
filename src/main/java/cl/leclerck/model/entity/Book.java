@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,4 +37,17 @@ public class Book {
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<Review> reviews;
+	
+	public String toJson() {
+        Book aux = new Book(id, isbn, name, year, author, stars, description, pictureUrl, reviews);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString = null;
+        try {
+            jsonString = mapper.writeValueAsString(aux);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
+    }
 }

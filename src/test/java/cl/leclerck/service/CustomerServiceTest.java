@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class UserServiceTest {
+public class CustomerServiceTest {
 
 	@Test
 	@DisplayName("Returns every customer")

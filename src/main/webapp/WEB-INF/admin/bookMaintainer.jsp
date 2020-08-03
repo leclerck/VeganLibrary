@@ -27,13 +27,13 @@
 
 <style type="text/css">
 .paginate_button:hover {
- 	border: solid #ffffff !important; 
+	border: solid #ffffff !important;
 	background: #ffffff !important
 }
 
-.page-item.active .page-link{
+.page-item.active .page-link {
 	background-color: #1eafed !important;
-border-color: #1eafed !important;
+	border-color: #1eafed !important;
 }
 </style>
 
@@ -65,8 +65,21 @@ border-color: #1eafed !important;
 								<button type="button" onclick="location.href = 'books';"
 									class="btn btn-primary btn-lg">Book Maintainer</button>
 							</div>
+
+							<c:if test="${not empty message}">
+								<div class="alert alert-info alert-dismissible fade show"
+									role="alert">
+									<strong>Done!</strong> ${message}
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</c:if>
+
 							<h3>Book Register</h3>
-							<form>
+							<form id="form" action="<c:url value='/books'/>" method="post"
+								enctype="multipart/form-data">
 								<div class="form-group row">
 									<label for="picture" class="col-sm-2 col-form-label">Picture
 									</label>
@@ -88,7 +101,7 @@ border-color: #1eafed !important;
 									<label for="name" class="col-sm-2 col-form-label">Name</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="text" class="form-control" id="name" name="nName"
+										<input type="text" class="form-control" id="name" name="name"
 											placeholder="Name">
 									</div>
 								</div>
@@ -119,13 +132,14 @@ border-color: #1eafed !important;
 								<div class="row">
 									<div class="col-sm-4"></div>
 									<div class="col-sm-8">
-										<button type="submit" class="btn btn-primary btn-block">Save</button>
+										<button id="button" type="submit"
+											class="btn btn-primary btn-block">Save</button>
 									</div>
 								</div>
 							</form>
 							<br>
 
-							<table class="table" id="myTable">
+							<table class="table" id="bookTable">
 								<thead>
 									<tr>
 										<th scope="col">Id</th>
@@ -136,33 +150,34 @@ border-color: #1eafed !important;
 										<th scope="col">Author</th>
 										<th scope="col">Stars</th>
 										<th scope="col">Description</th>
-										
+										<th scope="col">Action</th>
+
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-										<td>@mdo</td>
-										<td>@mdo</td>
-										<td>@mdo</td>
-										<td>@mdo</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>@fat</td>
-										<td>@fat</td>
-										<td>@fat</td>
-										<td>@fat</td>
-									</tr>
+
+									<c:forEach var="book" items="${books}">
+										<tr>
+											<th scope="row">${book.id}</th>
+											<td><img width="100" height="100"
+												src="<c:url value='${book.pictureUrl}'></c:url>"
+												class="rounded" alt="${book.pictureUrl}" /></td>
+											<td>${book.isbn}</td>
+											<td>${book.name}</td>
+											<td>${book.year}</td>
+											<td>${book.author}</td>
+											<td>${book.stars}</td>
+											<td>${book.description}</td>
+											<td><a href='javascript:actualizar(${book.toJson()})'>Update</a>
+												| <a href='javascript:eliminar(${book.toJson()})'>Delete</a>
+											</td>
+										</tr>
+									</c:forEach>
+
 									<tr>
 										<th scope="row">3</th>
 										<td>Larry</td>
+										<td>the Bird</td>
 										<td>the Bird</td>
 										<td>@twitter</td>
 										<td>@twitter</td>
@@ -210,8 +225,64 @@ border-color: #1eafed !important;
 		src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#myTable').DataTable();
+			$('#bookTable').DataTable();
 		});
+	</script>
+
+	<script type="text/javascript">
+		const delete = (book) => {
+			if(!confirm("Are you sure you want to delete : " + book.name))
+				return
+
+			const baseUrl = window.location.origin
+			window.location.href = baseUrl + '/books/delete?id=' + book.id
+		}
+		
+		const update = (user) => {
+			// capturamos el formulario
+			const form = document.querySelector('#form')
+			form.isbn.value = book.isbn
+			form.name.value = book.name
+			form.year.value = book.year
+			form.author.value = book.author
+			form.stars.value = book.stars
+			form.description.value = book.description
+
+			// eliminamos los imputs si existen, si existe
+			// será capturado por su id
+			const input001 = form.genElement001
+			if(input001)
+				input001.remove();
+
+			const input002 = form.genElement002
+			if(input002)
+				input002.remove();
+
+			// creamos dos input escondidos, con el resto
+			// de los atributos que necesitaremos para
+			// la actualización
+			const input_id = document.createElement('input')
+			input_id.type = 'hidden'
+			input_id.name = 'id'
+			input_id.value = book.id
+			input_id.id = 'genElement001'
+
+			const input_picture_url = document.createElement('input')
+			input_picture_url.type = 'hidden'
+			input_picture_url.name = 'pictureUrl'
+			input_picture_url.value = book.pictureUrl
+			input_picture_url.id = 'genElement002'
+
+			// agregamos estos campos creados al formulario
+			formulario.appendChild(input_id);
+			formulario.appendChild(input_picture_url);
+			// adaptamos el botón a una actualización
+			// lo capturamos por su id
+			formulario.boton.textContent = 'Update'
+			// cambiamos el método para que vaya a actualizar
+			formulario.action = '/books/update'
+		}
+
 	</script>
 
 </body>
