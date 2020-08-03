@@ -138,47 +138,58 @@
 								</div>
 							</form>
 							<br>
-
-							<table class="table" id="bookTable">
-								<thead>
-									<tr>
-										<th scope="col">Id</th>
-										<th scope="col">Picture</th>
-										<th scope="col">ISBN</th>
-										<th scope="col">Name</th>
-										<th scope="col">Year</th>
-										<th scope="col">Author</th>
-										<th scope="col">Stars</th>
-										<th scope="col">Description</th>
-										<th scope="col">Action</th>
-
-									</tr>
-								</thead>
-								<tbody>
-
-									<c:forEach var="book" items="${books}">
+							<c:out value="${books }"></c:out>
+							<div class="table-responsive">
+								
+								<table class="table" id="bookTable">
+									<thead>
 										<tr>
-											<th scope="row">${book.id}</th>
-											<td><img width="100" height="100"
-												src="<c:url value='${book.pictureUrl}'></c:url>"
-												class="rounded" alt="${book.pictureUrl}" /></td>
-											<td>${book.isbn}</td>
-											<td>${book.name}</td>
-											<td>${book.year}</td>
-											<td>${book.author}</td>
-											<td>${book.stars}</td>
-											<td>${book.description}</td>
-											<td><a href='javascript:actualizar(${book.toJson()})'>Update</a>
-												| <a href='javascript:eliminar(${book.toJson()})'>Delete</a>
-											</td>
+											<th scope="col">Id</th>
+											<th scope="col">Picture</th>
+											<th scope="col">ISBN</th>
+											<th scope="col">Name</th>
+											<th scope="col">Year</th>
+											<th scope="col">Author</th>
+											<th scope="col">Stars</th>
+											<th scope="col">Description</th>
+											<th scope="col">Reviews</th>
+											<th scope="col">Action</th>
+
 										</tr>
-									</c:forEach>
-									
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+
+										<c:forEach var="book" items="${books}">
+											<tr>
+												<th scope="row">${book.id}</th>
+												<td><img width="100" height="100"
+													src="<c:url value='${book.pictureUrl}'></c:url>"
+													class="rounded" alt="${book.pictureUrl}" /></td>
+												<td>${book.isbn}</td>
+												<td>${book.name}</td>
+												<td>${book.year}</td>
+												<td>${book.author}</td>
+												<td>${book.stars}</td>
+												<td><c:choose>
+														<c:when test="${book.description.length()>=15}">
+															<c:out value="${book.description.substring(0,15)}" /><a href="/book?id=${book.id}"> More...</a>
+												</c:when>
+														<c:otherwise>
+															<c:out value="${book.description}" />
+														</c:otherwise>
+													</c:choose></td>
+												<td>${book.reviews.size()}</td>
+												<td><a href='javascript:actualizar(${book.toJson()})'>Update</a>
+													| <a href='javascript:eliminar(${book.toJson()})'>Delete</a>
+												</td>
+											</tr>
+										</c:forEach>
+
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
-				</div>
 			</section>
 		</div>
 		<!-- END COLORLIB-MAIN -->
@@ -215,6 +226,13 @@
 	<script>
 		$(document).ready(function() {
 			$('#bookTable').DataTable();
+// 			columnDefs: [ {
+// 		        render: function ( data, type, row ) {
+// 		            return type === 'display' && data.length > 10 ?
+// 		                data.substr( 0, 10 ) +'…' :
+// 		                data;
+// 		        }
+		    } ]
 		});
 	</script>
 
@@ -234,8 +252,9 @@
 			form.name.value = book.name
 			form.year.value = book.year
 			form.author.value = book.author
-			form.stars.value = book.stars
+// 			form.stars.value = book.stars
 			form.description.value = book.description
+// 			form.reviews.value = book.description
 
 			// eliminamos los imputs si existen, si existe
 			// será capturado por su id

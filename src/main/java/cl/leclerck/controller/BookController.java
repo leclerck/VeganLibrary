@@ -44,7 +44,7 @@ public class BookController {
         ModelMap map,
         RedirectAttributes attributes,
         @ModelAttribute Book book	, 
-        @RequestParam(name = "pictureUrl", required = false) MultipartFile file) {
+        @RequestParam(name = "picture", required = false) MultipartFile file) {
         if(file.isEmpty())
             service.update(book);
         else

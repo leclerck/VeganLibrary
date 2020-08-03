@@ -29,8 +29,10 @@
 					<div class="row d-flex">
 						<div class="col-xl-8 py-5 px-md-5">
 							<div class="row pt-md-4">
-								<!--1er POST-->
+
 								<div class="col-md-12">
+
+									<!--1er POST-->
 									<div class="blog-entry ftco-animate d-md-flex">
 										<a href="single.jsp" class="img img-2"
 											style="background-image: url(../images/image_1.jpg);"></a>
@@ -38,13 +40,13 @@
 											<h3 class="mb-2">
 												<a href="book">A Loving Heart is the Truest Wisdom</a>
 											</h3>
-											
+
 											<div class="meta-wrap">
 												<p class="meta">
 													<span><a href=""><i class="icon-calendar mr-2"></i>2019</a></span>
 													<span><a href="">N <i class="fas fa-star mr-2"></i>
-															</a></span> <span><a href=""><i
-															class="icon-comment2 mr-2"></i>N Reviews</a></span>
+													</a></span> <span><a href=""><i class="icon-comment2 mr-2"></i>N
+															Reviews</a></span>
 												</p>
 											</div>
 											<p>ISBN:</p>
@@ -61,8 +63,39 @@
 											</p>
 										</div>
 									</div>
+									<!--1er POST-->
+
+									<c:forEach var="book" items="${books}">
+
+										<div class="blog-entry ftco-animate d-md-flex">
+											<a href="book" class="img img-2"
+												style="background-image: url(<c:url value='${book.pictureUrl}'></c:url>);"></a>
+											<div class="text text-2 pl-md-4">
+												<h3 class="mb-2">
+													<a href="book">${book.name}</a>
+												</h3>
+
+												<div class="meta-wrap">
+													<p class="meta">
+														<span><a href=""><i class="icon-calendar mr-2"></i>${book.year}</a></span>
+														<span><a href="">${book.stars}<i class="fas fa-star mr-2"></i>
+														</a></span> <span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}
+																Reviews</a></span>
+													</p>
+												</div>
+												<p>ISBN: ${book.isbn}</p>
+												<p>Author: ${book.author}</p>
+												<p class="mb-4">${book.description.substring(0,20)}</p>
+												<p>
+													<a href="#" class="btn-custom">Read More <span
+														class="ion-ios-arrow-forward"></span></a>
+												</p>
+											</div>
+										</div>
+									</c:forEach>
+
 								</div>
-								<!--1er POST-->
+
 							</div>
 							<!-- END-->
 							<div class="row">
