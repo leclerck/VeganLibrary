@@ -68,27 +68,39 @@
 									<c:forEach var="book" items="${books}">
 
 										<div class="blog-entry ftco-animate d-md-flex">
-											<a href="book" class="img img-2"
-												style="background-image: url(<c:url value='${book.pictureUrl}'></c:url>);"></a>
+											<a href="/book?id=${book.id}" class="img img-2"
+												style="background-image: url(<c:url value='../pictures/${book.pictureUrl}'></c:url>);"></a>
 											<div class="text text-2 pl-md-4">
 												<h3 class="mb-2">
-													<a href="book">${book.name}</a>
+													<a href="/book?id=${book.id}">${book.name}</a>
 												</h3>
 
 												<div class="meta-wrap">
 													<p class="meta">
-														<span><a href=""><i class="icon-calendar mr-2"></i>${book.year}</a></span>
-														<span><a href="">${book.stars}<i class="fas fa-star mr-2"></i>
-														</a></span> <span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}
-																Reviews</a></span>
+														<span><i class="icon-calendar mr-2"></i>${book.year}</span>
+														<span>${book.stars}<i
+																class="fas fa-star mr-2"></i>
+														</span> <span>><i class="icon-comment2 mr-2"></i>${book.reviews.size()}
+																Reviews</span>
 													</p>
 												</div>
 												<p>ISBN: ${book.isbn}</p>
 												<p>Author: ${book.author}</p>
-												<p class="mb-4">${book.description.substring(0,20)}</p>
+												<p class="mb-4">
+													<c:choose>
+														<c:when test="${book.description.length()>=15}">
+															<c:out value="${book.description.substring(0,15)}" />...
+														</c:when>
+														<c:otherwise>
+															<c:out value="${book.description}" />
+														</c:otherwise>
+													</c:choose>
+												</p>
 												<p>
-													<a href="#" class="btn-custom">Read More <span
-														class="ion-ios-arrow-forward"></span></a>
+
+													<a href="/book?id=${book.id}" class="btn-custom">Read
+														More <span class="ion-ios-arrow-forward"></span>
+													</a>
 												</p>
 											</div>
 										</div>

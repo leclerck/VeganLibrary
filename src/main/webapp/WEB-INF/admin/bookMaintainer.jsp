@@ -163,7 +163,7 @@
 											<tr>
 												<th scope="row">${book.id}</th>
 												<td><img width="100" height="100"
-													src="<c:url value='${book.pictureUrl}'></c:url>"
+													src="<c:url value='../pictures/${book.pictureUrl}'></c:url>"
 													class="rounded" alt="${book.pictureUrl}" /></td>
 												<td>${book.isbn}</td>
 												<td>${book.name}</td>
@@ -232,7 +232,7 @@
 // 		                data.substr( 0, 10 ) +'…' :
 // 		                data;
 // 		        }
-		    } ]
+// 		    } ]
 		});
 	</script>
 
