@@ -59,7 +59,7 @@
 					<div class="row d-flex">
 						<div class="col-xl-12 px-md-5 mt-5">
 							<div class="mb-4">
-								<button type="button" onclick="location.href = '../users';"
+								<button type="button" onclick="location.href = '../customers';"
 									class="btn btn-secondary btn-lg disabled">Customer
 									Maintainer</button>
 								<button type="button" onclick="location.href = 'books';"
@@ -173,18 +173,7 @@
 											</td>
 										</tr>
 									</c:forEach>
-
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>@twitter</td>
-										<td>@twitter</td>
-										<td>@twitter</td>
-										<td>@twitter</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
@@ -278,7 +267,7 @@
 			formulario.appendChild(input_picture_url);
 			// adaptamos el botón a una actualización
 			// lo capturamos por su id
-			formulario.boton.textContent = 'Update'
+			formulario.button.textContent = 'Update'
 			// cambiamos el método para que vaya a actualizar
 			formulario.action = '/books/update'
 		}

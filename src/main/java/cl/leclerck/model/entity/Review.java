@@ -22,7 +22,7 @@ import lombok.ToString;
 public class Review {
 
     @EmbeddedId
-    private BookUser id;
+    private BookCustomer id;
 
     private String title;
     private double stars;
@@ -30,9 +30,9 @@ public class Review {
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("user_id")
-    @JoinColumn(name = "user_id")
-    private Customer user;
+    @MapsId("customer_id")
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("book_id")

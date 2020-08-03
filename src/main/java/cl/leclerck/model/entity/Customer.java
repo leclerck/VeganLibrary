@@ -34,7 +34,7 @@ public class Customer {
 	
 	@Setter @Getter private Role roles;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	@Setter @Getter private List<Review> reviews;
  
     public void setContrasenia(String contrasenia) {

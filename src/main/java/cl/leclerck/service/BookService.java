@@ -6,11 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import cl.leclerck.model.dao.BookDao;
 import cl.leclerck.model.entity.Book;
-import cl.leclerck.service.util.FileUtils;
+import cl.leclerck.service.utils.FileUtils;
 
 @Service
 public class BookService {
@@ -22,6 +23,7 @@ public class BookService {
     @Autowired
     private FileUtils files;
     
+    @Transactional(readOnly = true)
     public List<Book> getAll(){
         return dao.findAll();
     }

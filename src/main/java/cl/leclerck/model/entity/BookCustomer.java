@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Data
 @Embeddable
-public class BookUser implements Serializable {
+public class BookCustomer implements Serializable {
 
     private static final long serialVersionUID = 2622464347110882879L;
     
-    @Column(name = "user_id", nullable = false) 
-    private Integer user;
+    @Column(name = "customer_id", nullable = false) 
+    private Integer customer;
 
     @Column(name = "book_id", nullable = false) 
     private Integer book;

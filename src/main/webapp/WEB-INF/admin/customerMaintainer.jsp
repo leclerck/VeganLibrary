@@ -13,7 +13,7 @@
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
-</head>
+
 
 <!-- CSS only -->
 <link rel="stylesheet"
@@ -28,15 +28,16 @@
 
 <style type="text/css">
 .paginate_button:hover {
- 	border: solid #ffffff !important; 
+	border: solid #ffffff !important;
 	background: #ffffff !important
 }
 
-.page-item.active .page-link{
+.page-item.active .page-link {
 	background-color: #1eafed !important;
-border-color: #1eafed !important;
+	border-color: #1eafed !important;
 }
 </style>
+</head>
 
 <body>
 
@@ -58,22 +59,33 @@ border-color: #1eafed !important;
 					<div class="row d-flex">
 						<div class="col-xl-12 px-md-5 mt-5">
 							<div class="mb-4">
-								<button type="button" onclick="location.href = 'users';"
+								<button type="button" onclick="location.href = 'customers';"
 									class="btn btn-primary btn-lg">Customer Maintainer</button>
 								<button type="button" onclick="location.href = '../books';"
 									class="btn btn-secondary btn-lg disabled">Book
 									Maintainer</button>
 							</div>
-							<h3>Sign in</h3>
+
+							<c:if test="${not empty message}">
+								<div class="alert alert-info alert-dismissible fade show"
+									role="alert">
+									<strong>Done!</strong> ${message}
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</c:if>
+
+							<h3>Customer sign in</h3>
 							<form>
 								<div class="form-group row">
 									<label for="avatar" class="col-sm-2 col-form-label">Profile
-										Picture
-									</label>
+										Picture </label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="file" class="form-control" id="avatar"
-											name="avatar">
+										<input type="file" class="form-control" id="avatarUrl"
+											name="avatarUrl">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -103,13 +115,14 @@ border-color: #1eafed !important;
 								<div class="row">
 									<div class="col-sm-4"></div>
 									<div class="col-sm-8">
-										<button type="submit" class="btn btn-primary btn-block">Save</button>
+										<button id="button" type="submit"
+											class="btn btn-primary btn-block">Save</button>
 									</div>
 								</div>
 							</form>
 							<br>
 
-							<table class="table" id="myTable">
+							<table class="table" id="customerTable">
 								<thead>
 									<tr>
 										<th scope="col">Id</th>
@@ -117,30 +130,25 @@ border-color: #1eafed !important;
 										<th scope="col">Username</th>
 										<th scope="col">Email</th>
 										<th scope="col">Password</th>
+										<th scope="col">Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-										<td>@mdo</td>
-										<td>@mdo</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-										<td>@fat</td>
-										<td>@fat</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-										<td>@twitter</td>
-										<td>@twitter</td>
-									</tr>
+									<c:forEach var="customer" items="${customers}">
+										<tr>
+											<th scope="row">${customer.id}</th>
+											<td><img width="100" height="100"
+												src="<c:url value='${customer.avatarUrl}'></c:url>"
+												class="rounded" alt="${customer.avatarUrl}" /></td>
+											<td>${customer.username}</td>
+											<td>${customer.email}</td>
+											<td>${customer.password}</td>
+											<td><a
+												href='javascript:actualizar(${customer.toJson()})'>Update</a>
+												| <a href='javascript:eliminar(${customer.toJson()})'>Delete</a>
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -181,8 +189,62 @@ border-color: #1eafed !important;
 		src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#myTable').DataTable();
+			$('#customerTable').DataTable();
 		});
+	</script>
+
+	<script type="text/javascript">
+		const delete = (customer) => {
+			if(!confirm("Are you sure you want to delete : " + customer.username))
+				return
+
+			const baseUrl = window.location.origin
+			window.location.href = baseUrl + '/customers/delete?id=' + book.id
+		}
+		
+		const update = (customer) => {
+			// capturamos el formulario
+			const form = document.querySelector('#form')
+			form.avatarUrl.value = customer.avatarUrl
+			form.username.value = customer.username
+			form.email.value = customer.email
+			form.password.value = customer.password
+			
+			// eliminamos los imputs si existen, si existe
+			// será capturado por su id
+			const input001 = form.genElement001
+			if(input001)
+				input001.remove();
+
+			const input002 = form.genElement002
+			if(input002)
+				input002.remove();
+
+			// creamos dos input escondidos, con el resto
+			// de los atributos que necesitaremos para
+			// la actualización
+			const input_id = document.createElement('input')
+			input_id.type = 'hidden'
+			input_id.name = 'id'
+			input_id.value = customer.id
+			input_id.id = 'genElement001'
+
+			const input_avatar_url = document.createElement('input')
+			input_avatar_url.type = 'hidden'
+			input_avatar_url.name = 'avatarUrl'
+			input_avatar_url.value = customer.avatarUrl
+			input_avatar_url.id = 'genElement002'
+
+			// agregamos estos campos creados al formulario
+			formulario.appendChild(input_id);
+			formulario.appendChild(input_avatar_url);
+			// adaptamos el botón a una actualización
+			// lo capturamos por su id
+			formulario.button.textContent = 'Update'
+			// cambiamos el método para que vaya a actualizar
+			formulario.action = '/customers/update'
+		}
+
 	</script>
 
 </body>

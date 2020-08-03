@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 	@GetMapping
-	public String index(ModelMap mapa) {
+	public String index(ModelMap map) {
 		return "home/index";
 	}
 	//href siempre hace GET
@@ -20,7 +20,7 @@ public class HomeController {
 	
 	@GetMapping("/admin")
 	public String admin() {
-		return "admin/userMaintainer";
+		return "admin/customerMaintainer";
 	}
 	
 	@GetMapping("/book")

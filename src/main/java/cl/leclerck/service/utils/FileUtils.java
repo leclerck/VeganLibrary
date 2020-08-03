@@ -1,4 +1,4 @@
-package cl.leclerck.service.util;
+package cl.leclerck.service.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileUtils {
 	private final Logger logger = LoggerFactory.getLogger(FileUtils.class);
-    private static final String IMG_PATH = "src/main/resources/static";
+    private static final String IMG_PATH = "src/main/resources/static/images";
     
 
     private String nameFile(MultipartFile file) {

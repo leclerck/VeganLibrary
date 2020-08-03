@@ -40,11 +40,11 @@ public class BookController {
     }
 	
 	@PostMapping("/update")
-    public String actualizar(
+    public String update(
         ModelMap map,
         RedirectAttributes attributes,
         @ModelAttribute Book book	, 
-        @RequestParam(name = "picture", required = false) MultipartFile file) {
+        @RequestParam(name = "pictureUrl", required = false) MultipartFile file) {
         if(file.isEmpty())
             service.update(book);
         else
@@ -56,7 +56,7 @@ public class BookController {
     }
 	
 	@PostMapping
-    public String ingresar(
+    public String register(
         RedirectAttributes attributes,
         @ModelAttribute Book book, 
         @RequestParam("picture") MultipartFile file) {
@@ -64,7 +64,7 @@ public class BookController {
         
         attributes.addFlashAttribute(
             "message", 
-            "Book: " 
+            "Book " 
             + responseBook.getName()
             + " registered."
         );
@@ -79,7 +79,7 @@ public class BookController {
         Book book = service.search(id);
         service.delete(book);
         String message = "Book: " + book.getName() + " deleted";
-        attributes.addFlashAttribute("mensaje", message);
+        attributes.addFlashAttribute("message", message);
 
         return "redirect:/books";
     }
