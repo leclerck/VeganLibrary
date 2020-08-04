@@ -3,7 +3,7 @@
 <div class="colorlib-footer py-3">
 	<h1 id="colorlib-logo" class="">
 		<a href="/"
-			style="background-image: url(../images/avocado.jpg);">Vegan<span>Library</span></a>
+			style="background-image: url(../frontImages/avocado.jpg);">Vegan<span>Library</span></a>
 	</h1>
 	<p class="pfooter">
 	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->

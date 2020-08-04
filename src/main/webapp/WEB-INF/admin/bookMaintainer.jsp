@@ -138,9 +138,9 @@
 								</div>
 							</form>
 							<br>
-							
+
 							<div class="table-responsive">
-								
+
 								<table class="table" id="bookTable">
 									<thead>
 										<tr>
@@ -163,7 +163,7 @@
 											<tr>
 												<th scope="row">${book.id}</th>
 												<td><img width="100" height="100"
-													src="<c:url value='../pictures/${book.pictureUrl}'></c:url>"
+													src="<c:url value='../pictures/books/${book.pictureUrl}'></c:url>"
 													class="rounded" alt="${book.pictureUrl}" /></td>
 												<td>${book.isbn}</td>
 												<td>${book.name}</td>
@@ -172,8 +172,9 @@
 												<td>${book.stars}</td>
 												<td><c:choose>
 														<c:when test="${book.description.length()>=15}">
-															<c:out value="${book.description.substring(0,15)}" /><a href="/book?id=${book.id}"> More...</a>
-												</c:when>
+															<c:out value="${book.description.substring(0,15)}" />
+															<a href="/book?id=${book.id}"> More...</a>
+														</c:when>
 														<c:otherwise>
 															<c:out value="${book.description}" />
 														</c:otherwise>
@@ -232,10 +233,9 @@
 
 	<script type="text/javascript">
 		const delete_ = (book) => {
-			debugger
 			if(!confirm("Are you sure you want to delete: " + book.name))
 				return
-			debugger
+				
 			const baseUrl = window.location.origin
 			window.location.href = baseUrl + '/books/delete?id=' + book.id
 		}
@@ -246,9 +246,9 @@
 				const form = document.querySelector('#form')
 				form.isbn.value = book.isbn
 				form.name.value = book.name
-			form.year.value = book.year
-			form.author.value = book.author
-			form.description.value = book.description
+				form.year.value = book.year
+				form.author.value = book.author
+				form.description.value = book.description
 
 
 			// eliminamos los imputs si existen, si existe

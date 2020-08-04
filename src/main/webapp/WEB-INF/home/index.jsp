@@ -35,7 +35,7 @@
 									<!--1er POST-->
 									<div class="blog-entry ftco-animate d-md-flex">
 										<a href="single.jsp" class="img img-2"
-											style="background-image: url(../images/image_1.jpg);"></a>
+											style="background-image: url(../frontImages/image_1.jpg);"></a>
 										<div class="text text-2 pl-md-4">
 											<h3 class="mb-2">
 												<a href="book">A Loving Heart is the Truest Wisdom</a>
@@ -69,7 +69,7 @@
 
 										<div class="blog-entry ftco-animate d-md-flex">
 											<a href="/book?id=${book.id}" class="img img-2"
-												style="background-image: url(<c:url value='../pictures/${book.pictureUrl}'></c:url>);"></a>
+												style="background-image: url(<c:url value='../pictures/books/${book.pictureUrl}'></c:url>);"></a>
 											<div class="text text-2 pl-md-4">
 												<h3 class="mb-2">
 													<a href="/book?id=${book.id}">${book.name}</a>

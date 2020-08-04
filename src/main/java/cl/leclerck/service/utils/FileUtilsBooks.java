@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileUtilsBooks {
 	private final Logger logger = LoggerFactory.getLogger(FileUtilsBooks.class);
-    private static final String IMG_PATH = "src/main/resources/static/pictures/";
+    private static final String IMG_PATH = "src/main/resources/static/pictures/books/";
     
 
     private String nameFile(MultipartFile file) {

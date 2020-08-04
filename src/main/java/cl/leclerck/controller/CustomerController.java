@@ -45,7 +45,7 @@ public class CustomerController {
         ModelMap map,
         RedirectAttributes attributes,
         @ModelAttribute Customer customer	, 
-        @RequestParam(name = "picture", required = false) MultipartFile file) {
+        @RequestParam(name = "avatar", required = false) MultipartFile file) {
         if(file.isEmpty())
             service.update(customer);
         else
@@ -61,7 +61,6 @@ public class CustomerController {
         RedirectAttributes attributes,
         @ModelAttribute Customer customer, 
         @RequestParam("avatar") MultipartFile avatar) {
-
         Customer responseCustomer = service.signIn(customer, avatar); 
         
         attributes.addFlashAttribute(

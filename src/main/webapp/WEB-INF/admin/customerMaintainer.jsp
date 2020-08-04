@@ -69,7 +69,7 @@
 							<c:if test="${not empty message}">
 								<div class="alert alert-info alert-dismissible fade show"
 									role="alert">
-									<strong>Done!</strong> ${message}
+									<strong>Done! </strong> ${message}
 									<button type="button" class="close" data-dismiss="alert"
 										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
@@ -146,7 +146,7 @@
 											<td>${customer.password}</td>
 											<td><a
 												href='javascript:update(${customer.toJson()})'>Update</a>
-												| <a href='javascript:delete(${customer.toJson()})'>Delete</a>
+												| <a href='javascript:delete_(${customer.toJson()})'>Delete</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -195,7 +195,7 @@
 	</script>
 
 	<script type="text/javascript">
-		const delete = (customer) => {
+		const delete_ = (customer) => {
 			if(!confirm("Are you sure you want to delete : " + customer.username))
 				return
 
@@ -206,7 +206,6 @@
 		const update = (customer) => {
 			// capturamos el formulario
 			const form = document.querySelector('#form')
-			form.avatarUrl.value = customer.avatarUrl
 			form.username.value = customer.username
 			form.email.value = customer.email
 			form.password.value = customer.password
@@ -237,13 +236,13 @@
 			input_avatar_url.id = 'genElement002'
 
 			// agregamos estos campos creados al formulario
-			formulario.appendChild(input_id);
-			formulario.appendChild(input_avatar_url);
+			form.appendChild(input_id);
+			form.appendChild(input_avatar_url);
 			// adaptamos el botón a una actualización
 			// lo capturamos por su id
-			formulario.button.textContent = 'Update'
+			form.button.textContent = 'Update'
 			// cambiamos el método para que vaya a actualizar
-			formulario.action = '/customers/update'
+			form.action = '/customers/update'
 		}
 
 	</script>

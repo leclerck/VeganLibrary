@@ -24,7 +24,7 @@
 		<!--1er POST-->
 		<div class="block-21 mb-4 d-flex">
 			<a class="blog-img mr-4"
-				style="background-image: url(../images/image_1.jpg);"></a>
+				style="background-image: url(../frontImages/image_1.jpg);"></a>
 			<div class="text">
 				<h3 class="heading">
 					<a href="#">Even the all-powerful Pointing has no control</a>

@@ -5,8 +5,7 @@
 <html lang="en">
 
 <head>
-<title>Vegan Library - ${book.name}"
-</title>
+<title>Vegan Library - ${book.name}</title>
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
@@ -32,27 +31,29 @@
 					<div class="row d-flex">
 						<div class="col-lg-8 px-md-5 py-5">
 							<div class="row pt-md-4">
-								<h1 class="mb-3">
-									${book.name}
-								</h1>
+<p>
+								<h1 class="mb-3">${book.name}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									&nbsp; &nbsp;</h1>
+</p>
+								<br>
 								<div class="meta-wrap">
 									<p class="meta">
 										<span><a href=""><i class="icon-calendar mr-2"></i>${book.year}</a></span>
-<%-- 										<c:forEach begin="0" end="${(int) book.stars}" varStatus="loop"> --%>
-<!-- 											<i class="fas fa-star"></i> -->
-<%-- 										</c:forEach> --%>
+										<%-- 										<c:forEach begin="0" end="${book.stars}" varStatus="loop"> --%>
+										<!-- 											<i class="fas fa-star"></i> -->
+										<%-- 										</c:forEach> --%>
 										<span> <i class="fas fa-star"></i> <i
 											class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i>
-											<i class="far fa-star"></i> Stars</span> <span><a href=""><i
-												class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
+											<i class="far fa-star"></i> Stars
+										</span> <span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
 										<button type="button" class="btn btn-primary ml-4">Download
 											Here</button>
 
 									</p>
 								</div>
-								<div class="row">
-									<div class="col-lg-8">
-										<img src="../pictures/${book.pictureUrl}" alt=""
+								<div class="row mb-4" >
+									<div class="col-lg-7">
+										<img src="../pictures/books/${book.pictureUrl}" alt=""
 											class="img-fluid">
 									</div>
 									<div class="col-lg-4">
@@ -61,24 +62,12 @@
 
 									</div>
 								</div>
-								<p>${book.description}</p>
-
-
-
-
-								<div class="about-author d-flex p-4 bg-light">
-									<div class="bio mr-5">
-										<img src="../images/person_1.jpg" alt="Image placeholder"
-											class="img-fluid mb-4">
+								<br>
+								<div class="row">
+									<div class ="col-lg-4">
+										<p>${book.description}</p>
 									</div>
-									<div class="desc">
-										<h3>${book.author}</h3>
-										<!-- 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing -->
-										<!-- 											elit. Ducimus itaque, autem necessitatibus voluptate quod -->
-										<!-- 											mollitia delectus aut, sunt placeat nam vero culpa sapiente -->
-										<!-- 											consectetur similique, inventore eos fugit cupiditate -->
-										<!-- 											numquam!</p> -->
-									</div>
+									<div class ="col-lg-7"></div>
 								</div>
 
 								<div class="tag-widget post-tag-container mb-5 mt-5">
@@ -97,7 +86,8 @@
 									<ul class="comment-list">
 										<li class="comment">
 											<div class="vcard bio">
-												<img src="../images/person_1.jpg" alt="Image placeholder">
+												<img src="../frontImages/person_1.jpg"
+													alt="Image placeholder">
 											</div>
 											<div class="comment-body">
 												<h3>John Doe</h3>
