@@ -21,17 +21,6 @@ public class CustomerController {
 	@Autowired
     private CustomerService service;
 
-	@GetMapping("/signin")
-	public String showSignIn() {
-		return "customer/signin";
-	}
-
-	@GetMapping("/customers")
-	public String customersMaintainer() {
-		return "admin/userMaintainer";
-
-	}
-	
 	@GetMapping
     public String home(
         @ModelAttribute("message") String message, 
@@ -43,6 +32,13 @@ public class CustomerController {
 
         return "admin/customerMaintainer";
     }
+
+	@GetMapping("/signin")
+	public String showSignIn() {
+		return "customer/signin";
+	}
+	
+
 	
 	@PostMapping("/update")
     public String update(
@@ -64,8 +60,9 @@ public class CustomerController {
     public String signIn(
         RedirectAttributes attributes,
         @ModelAttribute Customer customer, 
-        @RequestParam("picture") MultipartFile file) {
-        Customer responseCustomer = service.signIn(customer, file); 
+        @RequestParam("avatar") MultipartFile avatar) {
+
+        Customer responseCustomer = service.signIn(customer, avatar); 
         
         attributes.addFlashAttribute(
             "message", 
@@ -74,7 +71,7 @@ public class CustomerController {
             + " signed in."
         );
 
-        return "redirect:/customer";
+        return "redirect:/customers";
     }
 
     @GetMapping(value = "/delete")

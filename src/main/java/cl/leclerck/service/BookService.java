@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cl.leclerck.model.dao.BookDao;
 import cl.leclerck.model.entity.Book;
-import cl.leclerck.service.utils.FileUtils;
+import cl.leclerck.service.utils.FileUtilsBooks;
 
 @Service
 public class BookService {
@@ -21,7 +21,7 @@ public class BookService {
     private BookDao dao;
     
     @Autowired
-    private FileUtils files;
+    private FileUtilsBooks fileUtils;
     
     @Transactional(readOnly = true)
     public List<Book> getAll(){
@@ -30,7 +30,7 @@ public class BookService {
     
     public Book register(Book book, MultipartFile file) {
         logger.info("Registering book: " + book.toString());
-        String fileName = files.uploadFile(file);
+        String fileName = fileUtils.uploadFile(file);
         book.setPictureUrl(fileName);
         book.setId(null);
         return dao.save(book);
@@ -42,7 +42,7 @@ public class BookService {
     
     public Book delete(Book book) {
         String fileName = book.getPictureUrl();
-        boolean deletedFile = files.deleteFileByName(fileName);
+        boolean deletedFile = fileUtils.deleteFileByName(fileName);
 
         if(!deletedFile) {
             logger.error("File " + fileName + " couldn't be deleted");
@@ -60,9 +60,9 @@ public class BookService {
     public Book update(Book book, MultipartFile file) {
         Book previousBook = dao.findById(book.getId()).orElse(null);
         // eliminamos la imagen anterior
-        files.deleteFileByName(previousBook.getPictureUrl());
+        fileUtils.deleteFileByName(previousBook.getPictureUrl());
         // subimos la nueva
-        String nombreArchivo = files.uploadFile(file);
+        String nombreArchivo = fileUtils.uploadFile(file);
         // actualizamos el registro en la base de datos
         book.setPictureUrl(nombreArchivo);
 

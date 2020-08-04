@@ -78,14 +78,15 @@
 							</c:if>
 
 							<h3>Customer sign in</h3>
-							<form>
+							<form id="form" action="<c:url value='/customers'/>" method="post"
+								enctype="multipart/form-data">
 								<div class="form-group row">
 									<label for="avatar" class="col-sm-2 col-form-label">Profile
 										Picture </label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
-										<input type="file" class="form-control" id="avatarUrl"
-											name="avatarUrl">
+										<input type="file" class="form-control" id="avatar"
+											name="avatar">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -138,14 +139,14 @@
 										<tr>
 											<th scope="row">${customer.id}</th>
 											<td><img width="100" height="100"
-												src="<c:url value='${customer.avatarUrl}'></c:url>"
+												src="<c:url value='../pictures/customers/${customer.avatarUrl}'></c:url>"
 												class="rounded" alt="${customer.avatarUrl}" /></td>
 											<td>${customer.username}</td>
 											<td>${customer.email}</td>
 											<td>${customer.password}</td>
 											<td><a
-												href='javascript:actualizar(${customer.toJson()})'>Update</a>
-												| <a href='javascript:eliminar(${customer.toJson()})'>Delete</a>
+												href='javascript:update(${customer.toJson()})'>Update</a>
+												| <a href='javascript:delete(${customer.toJson()})'>Delete</a>
 											</td>
 										</tr>
 									</c:forEach>

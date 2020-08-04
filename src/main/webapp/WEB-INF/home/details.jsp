@@ -1,8 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Vegan Library</title>
+<title>Vegan Library - ${book.name}"
+</title>
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
@@ -28,20 +32,19 @@
 					<div class="row d-flex">
 						<div class="col-lg-8 px-md-5 py-5">
 							<div class="row pt-md-4">
-								<h1 class="mb-3">A Loving Heart is the Truest Wisdom</h1>
+								<h1 class="mb-3">
+									${book.name}
+								</h1>
 								<div class="meta-wrap">
 									<p class="meta">
-										<span><a href=""><i class="icon-calendar mr-2"></i>2019</a></span>
-										<span><a href=""><i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star-half-alt"></i>
-										<i class="far fa-star"></i>
-												Stars</a></span> 
-												
-												
-												<span><a href=""><i
-												class="icon-comment2 mr-2"></i>N Reviews</a></span>
+										<span><a href=""><i class="icon-calendar mr-2"></i>${book.year}</a></span>
+<%-- 										<c:forEach begin="0" end="${(int) book.stars}" varStatus="loop"> --%>
+<!-- 											<i class="fas fa-star"></i> -->
+<%-- 										</c:forEach> --%>
+										<span> <i class="fas fa-star"></i> <i
+											class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i>
+											<i class="far fa-star"></i> Stars</span> <span><a href=""><i
+												class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
 										<button type="button" class="btn btn-primary ml-4">Download
 											Here</button>
 
@@ -49,24 +52,16 @@
 								</div>
 								<div class="row">
 									<div class="col-lg-8">
-										<img src="../images/image_1.jpg" alt="" class="img-fluid">
+										<img src="../pictures/${book.pictureUrl}" alt=""
+											class="img-fluid">
 									</div>
 									<div class="col-lg-4">
-										<p>ISBN: 1234567890</p>
-										<p>Authors:</p>
-										<ul>
-											<li>Author One</li>
-										</ul>
+										<p>ISBN: ${book.isbn}</p>
+										<p>Author: ${book.author}</p>
 
 									</div>
 								</div>
-								<p>Molestiae cupiditate inventore animi, maxime sapiente
-									optio, illo est nemo veritatis repellat sunt doloribus
-									nesciunt! Minima laborum magni reiciendis qui voluptate
-									quisquam voluptatem soluta illo eum ullam incidunt rem
-									assumenda eveniet eaque sequi deleniti tenetur dolore amet
-									fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero
-									ut ea, repudiandae suscipit!</p>
+								<p>${book.description}</p>
 
 
 
@@ -77,12 +72,12 @@
 											class="img-fluid mb-4">
 									</div>
 									<div class="desc">
-										<h3>George Washington</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit. Ducimus itaque, autem necessitatibus voluptate quod
-											mollitia delectus aut, sunt placeat nam vero culpa sapiente
-											consectetur similique, inventore eos fugit cupiditate
-											numquam!</p>
+										<h3>${book.author}</h3>
+										<!-- 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing -->
+										<!-- 											elit. Ducimus itaque, autem necessitatibus voluptate quod -->
+										<!-- 											mollitia delectus aut, sunt placeat nam vero culpa sapiente -->
+										<!-- 											consectetur similique, inventore eos fugit cupiditate -->
+										<!-- 											numquam!</p> -->
 									</div>
 								</div>
 
@@ -97,7 +92,8 @@
 
 
 								<div class="pt-5 mt-5">
-									<h3 class="mb-5 font-weight-bold">N Reviews</h3>
+									<h3 class="mb-5 font-weight-bold">${book.reviews.size()}
+										Reviews</h3>
 									<ul class="comment-list">
 										<li class="comment">
 											<div class="vcard bio">

@@ -98,7 +98,7 @@
 												</p>
 												<p>
 
-													<a href="/book?id=${book.id}" class="btn-custom">Read
+													<a href="books/detail?id=${book.id}" class="btn-custom">Read
 														More <span class="ion-ios-arrow-forward"></span>
 													</a>
 												</p>

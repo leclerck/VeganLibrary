@@ -2,10 +2,12 @@ package cl.leclerck.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 //import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,5 +85,14 @@ public class BookController {
 
         return "redirect:/books";
     }
+    
+	@GetMapping("/detail")
+	public String showBook(@RequestParam("id") int idBook, Model model) {
+		//book?id
+		Book book = service.search(idBook);
+		model.addAttribute("book",book);
+	
+		return "home/details";
+	}
 
 }

@@ -12,7 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import cl.leclerck.model.dao.CustomerDao;
 import cl.leclerck.model.entity.Book;
 import cl.leclerck.model.entity.Customer;
-import cl.leclerck.service.utils.FileUtils;
+import cl.leclerck.service.utils.FileUtilsBooks;
+import cl.leclerck.service.utils.FileUtilsCustomers;
 
 @Service
 public class CustomerService {
@@ -22,7 +23,7 @@ public class CustomerService {
     private CustomerDao dao;
     
     @Autowired
-    private FileUtils files;
+    private FileUtilsCustomers fileUtils;
 
     @Transactional(readOnly = true)
     public List<Customer> getAll(){
@@ -31,7 +32,7 @@ public class CustomerService {
     
     public Customer signIn(Customer customer, MultipartFile file) {
         logger.info("Signing in customer: " + customer.toString());
-        String fileName = files.uploadFile(file);
+        String fileName = fileUtils.uploadFile(file);
         customer.setAvatarUrl(fileName);
         customer.setId(null);
         return dao.save(customer);
@@ -43,7 +44,7 @@ public class CustomerService {
     
     public Customer delete(Customer customer) {
         String fileName = customer.getAvatarUrl();
-        boolean deletedFile = files.deleteFileByName(fileName);
+        boolean deletedFile = fileUtils.deleteFileByName(fileName);
 
         if(!deletedFile) {
             logger.error("File " + fileName + " couldn't be deleted");
@@ -61,9 +62,9 @@ public class CustomerService {
     public Customer update(Customer customer, MultipartFile file) {
     	Customer previousBook = dao.findById(customer.getId()).orElse(null);
         // eliminamos la imagen anterior
-        files.deleteFileByName(previousBook.getAvatarUrl());
+    	fileUtils.deleteFileByName(previousBook.getAvatarUrl());
         // subimos la nueva
-        String nombreArchivo = files.uploadFile(file);
+        String nombreArchivo = fileUtils.uploadFile(file);
         // actualizamos el registro en la base de datos
         customer.setAvatarUrl(nombreArchivo);
 

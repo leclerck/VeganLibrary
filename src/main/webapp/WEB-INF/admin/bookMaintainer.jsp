@@ -138,7 +138,7 @@
 								</div>
 							</form>
 							<br>
-							<c:out value="${books }"></c:out>
+							
 							<div class="table-responsive">
 								
 								<table class="table" id="bookTable">
@@ -179,8 +179,8 @@
 														</c:otherwise>
 													</c:choose></td>
 												<td>${book.reviews.size()}</td>
-												<td><a href='javascript:actualizar(${book.toJson()})'>Update</a>
-													| <a href='javascript:eliminar(${book.toJson()})'>Delete</a>
+												<td><a href='javascript:update(${book.toJson()})'>Update</a>
+													| <a href='javascript:delete_(${book.toJson()})'>Delete</a>
 												</td>
 											</tr>
 										</c:forEach>
@@ -226,35 +226,30 @@
 	<script>
 		$(document).ready(function() {
 			$('#bookTable').DataTable();
-// 			columnDefs: [ {
-// 		        render: function ( data, type, row ) {
-// 		            return type === 'display' && data.length > 10 ?
-// 		                data.substr( 0, 10 ) +'…' :
-// 		                data;
-// 		        }
-// 		    } ]
+
 		});
 	</script>
 
 	<script type="text/javascript">
-		const delete = (book) => {
-			if(!confirm("Are you sure you want to delete : " + book.name))
+		const delete_ = (book) => {
+			debugger
+			if(!confirm("Are you sure you want to delete: " + book.name))
 				return
-
+			debugger
 			const baseUrl = window.location.origin
 			window.location.href = baseUrl + '/books/delete?id=' + book.id
 		}
-		
-		const update = (user) => {
-			// capturamos el formulario
-			const form = document.querySelector('#form')
-			form.isbn.value = book.isbn
-			form.name.value = book.name
+			
+			const update = (book) => {
+
+				// capturamos el formulario
+				const form = document.querySelector('#form')
+				form.isbn.value = book.isbn
+				form.name.value = book.name
 			form.year.value = book.year
 			form.author.value = book.author
-// 			form.stars.value = book.stars
 			form.description.value = book.description
-// 			form.reviews.value = book.description
+
 
 			// eliminamos los imputs si existen, si existe
 			// será capturado por su id
@@ -282,13 +277,13 @@
 			input_picture_url.id = 'genElement002'
 
 			// agregamos estos campos creados al formulario
-			formulario.appendChild(input_id);
-			formulario.appendChild(input_picture_url);
+			form.appendChild(input_id);
+			form.appendChild(input_picture_url);
 			// adaptamos el botón a una actualización
 			// lo capturamos por su id
-			formulario.button.textContent = 'Update'
+			form.button.textContent = 'Update'
 			// cambiamos el método para que vaya a actualizar
-			formulario.action = '/books/update'
+			form.action = '/books/update'
 		}
 
 	</script>

@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 //import cl.leclerck.config.EncoderUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,8 +40,21 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	@Setter @Getter private List<Review> reviews;
  
-    public void setContrasenia(String contrasenia) {
-//        this.password = EncoderUtils.passwordEncoder().encode(contrasenia);
+    public void setPassword(String password) {
+    //    this.password = EncoderUtils.passwordEncoder().encode(password);
+    }
+    
+    public String toJson() {
+        Customer aux = new Customer(id, username, email, password, avatarUrl, roles, reviews);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString = null;
+        try {
+            jsonString = mapper.writeValueAsString(aux);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        
+        return jsonString;
     }
 
 }

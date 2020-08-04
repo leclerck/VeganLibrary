@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
-public class FileUtils {
-	private final Logger logger = LoggerFactory.getLogger(FileUtils.class);
-    private static final String IMG_PATH = "src/main/resources/static/pictures/";
+public class FileUtilsCustomers {
+	private final Logger logger = LoggerFactory.getLogger(FileUtilsCustomers.class);
+    private static final String IMG_PATH = "src/main/resources/static/pictures/customers/";
     
 
     private String nameFile(MultipartFile file) {
@@ -30,7 +30,6 @@ public class FileUtils {
     public String uploadFile(MultipartFile file) {
         String newName = nameFile(file);
         String picturePath = IMG_PATH + File.separator + newName;
-
         // ruta completa del archivo
         Path path = Paths.get(picturePath);
         try {
