@@ -30,6 +30,8 @@ public class AuthServiceImpl  implements UserDetailsService {
     public UserDetails loadUserByUsername(String name)
             throws UsernameNotFoundException {
 
+        
+        System.out.println("XXXXXXXXXX:");
         Customer customer = customerDao.findByUsername(name).orElse(null);
         User user = null;
         

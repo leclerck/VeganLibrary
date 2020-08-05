@@ -35,29 +35,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
         auth.userDetailsService(userDetailsService).passwordEncoder(EncoderUtils.passwordEncoder());
     }
-//HABILITA RECURSOS STATIC CUANDO NO SE ESTÁ LOGGEADO
-//    @Override
-//	public void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable().authorizeRequests().antMatchers("/img/**", "/css/**", "/js/**").permitAll()
-//				.antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/login").permitAll().antMatchers("/signin")
-//				.permitAll().requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-//				.anyRequest().authenticated().and().formLogin().loginPage("/login")
-//				.successHandler(authenticationHandler).failureUrl("/login?error=true").usernameParameter("username")
-//				.passwordParameter("password").and().exceptionHandling().accessDeniedPage("/recurso-prohibido");
-//	}
-//
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
         .authorizeRequests()
-        .antMatchers("/auth/**").permitAll()
+        .antMatchers(
+                "/pictures/**", 
+                "/frontImages/**", 
+                "/css/**", 
+                "/js/**",
+                "/auth/**",
+                "/login",
+                "/signin"
+        ).permitAll()
+        .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+        .permitAll()
+        
         .antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/auth/login").permitAll()
-        .antMatchers("/login").permitAll()
-        .antMatchers("/auth/signin").permitAll()
-        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
         .anyRequest().authenticated()
-        .and().formLogin().loginPage("/auth/login")
+
+        .and().formLogin().loginPage("/login")
         .successHandler(authenticationHandler)
         .failureUrl("/login?error=true")
         .usernameParameter("username").passwordParameter("password")
