@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cl.leclerck.model.entity.Book;
 import cl.leclerck.service.BookService;
 import cl.leclerck.service.CustomerService;
 
@@ -31,7 +28,6 @@ public class HomeController {
 		String username = auth.getName();
 		viewMap.addAttribute("username", username);
 
-		// viewMap.put("customer", customerService.getAll());
 		String name = customerService.searchByUsername(username);
         viewMap.addAttribute("name", name);
 
@@ -39,7 +35,6 @@ public class HomeController {
 		return "home/index";
 	}
 
-	// href siempre hace GET
 	@GetMapping("/about")
 	public String about() {
 		return "home/about";

@@ -15,9 +15,9 @@ import cl.leclerck.service.AuthServiceImpl;
 
 @EnableWebSecurity
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService_;
     private AuthenticationSuccessHandler authenticationHandler;
     
     @Autowired
@@ -25,15 +25,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         AuthServiceImpl userDetailsService, 
         AuthenticationHandler authenticationHandler) {
     
-       this.userDetailsService = userDetailsService;
+       this.userDetailsService_ = userDetailsService;
        this.authenticationHandler = authenticationHandler;
      
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-
-        auth.userDetailsService(userDetailsService).passwordEncoder(EncoderUtils.passwordEncoder());
+        auth.userDetailsService(userDetailsService_)
+            .passwordEncoder(EncoderUtils.passwordEncoder());
     }
 
     @Override
@@ -58,7 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         .and().formLogin().loginPage("/login")
         .successHandler(authenticationHandler)
         .failureUrl("/login?error=true")
-        .usernameParameter("username").passwordParameter("password")
         .and().exceptionHandling().accessDeniedPage("/denied-page");
 
     }

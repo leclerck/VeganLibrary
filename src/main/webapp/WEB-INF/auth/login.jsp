@@ -19,14 +19,18 @@
 				<form action="/login" method="post">
 
 					<div class="form-group">
-						<label for="exampleUsername">Username</label> <input type="text"
-							class="form-control" id="exampleUsername"
-							aria-describedby="emailHelp" placeholder="enter your password...">
+						<label for="exampleUsername">Username</label> 
+						<input type="text"
+							id="username" name="username"
+							class="form-control"
+							aria-describedby="emailHelp" placeholder="enter your password..." />
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> <input
-							type="password" class="form-control" id="exampleInputPassword1"
+						<label for="password">Password</label> 
+						<input
+							id="password" name="password"
+							type="password" class="form-control"
 							placeholder="enter your password... ">
 					</div>
 
