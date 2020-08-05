@@ -15,60 +15,69 @@ import cl.leclerck.service.utils.FileUtilsBooks;
 
 @Service
 public class BookService {
-    private final Logger logger = LoggerFactory.getLogger(BookService.class);
-    
-    @Autowired
-    private BookDao dao;
-    
-    @Autowired
-    private FileUtilsBooks fileUtils;
-    
-    @Transactional(readOnly = true)
-    public List<Book> getAll(){
-        return dao.findAll();
-    }
-    
-    public Book register(Book book, MultipartFile file) {
-        logger.info("Registering book: " + book.toString());
-        String fileName = fileUtils.uploadFile(file);
-        book.setPictureUrl(fileName);
-        book.setId(null);
-        return dao.save(book);
-    }
-    
-    public Book search(Integer id) {
-        return dao.findById(id).orElse(null);    
-    }
-    
-    public Book delete(Book book) {
-        String fileName = book.getPictureUrl();
-        boolean deletedFile = fileUtils.deleteFileByName(fileName);
+	private final Logger logger = LoggerFactory.getLogger(BookService.class);
 
-        if(!deletedFile) {
-            logger.error("File " + fileName + " couldn't be deleted");
-        }
-        
-        dao.delete(book);
-        
-        return book;
-    }
+	@Autowired
+	private BookDao dao;
 
-    public Book update(Book book) {
-        return dao.save(book);
-    }
+	@Autowired
+	private FileUtilsBooks fileUtils;
 
-    public Book update(Book book, MultipartFile file) {
-        Book previousBook = dao.findById(book.getId()).orElse(null);
-        // eliminamos la imagen anterior
-        fileUtils.deleteFileByName(previousBook.getPictureUrl());
-        // subimos la nueva
-        String nombreArchivo = fileUtils.uploadFile(file);
-        // actualizamos el registro en la base de datos
-        book.setPictureUrl(nombreArchivo);
+	@Transactional(readOnly = true)
+	public List<Book> getAll() {
+		return dao.findAll();
+	}
 
-        return dao.save(book);
-    }
-    
-    
+	public Book register(Book book, MultipartFile file) {
+		logger.info("Registering book: " + book.toString());
+		String fileName = fileUtils.uploadFile(file);
+		book.setPictureUrl(fileName);
+		book.setId(null);
+		return dao.save(book);
+	}
+
+	public Book search(Integer id) {
+		return dao.findById(id).orElse(null);
+	}
+
+	public Book delete(Book book) {
+		String fileName = book.getPictureUrl();
+		boolean deletedFile = fileUtils.deleteFileByName(fileName);
+
+		if (!deletedFile) {
+			logger.error("File " + fileName + " couldn't be deleted");
+		}
+
+		dao.delete(book);
+
+		return book;
+	}
+
+	public Book update(Book book) {
+		return dao.save(book);
+	}
+
+	public Book update(Book book, MultipartFile file) {
+		Book previousBook = dao.findById(book.getId()).orElse(null);
+		// eliminamos la imagen anterior
+		fileUtils.deleteFileByName(previousBook.getPictureUrl());
+		// subimos la nueva
+		String nombreArchivo = fileUtils.uploadFile(file);
+		// actualizamos el registro en la base de datos
+		book.setPictureUrl(nombreArchivo);
+
+		return dao.save(book);
+	}
+
+	public void calculateStars(double stars) {
+		int whole = (int) stars;
+		int half;
+		if (stars - whole >= .25 && stars - whole < .75) {
+			half = 1;
+		} else {
+			half = 0;
+		}
+		int empty = 5 - whole - half;
+
+	}
 }
-

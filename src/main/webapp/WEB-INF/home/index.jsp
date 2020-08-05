@@ -68,11 +68,11 @@
 									<c:forEach var="book" items="${books}">
 
 										<div class="blog-entry ftco-animate d-md-flex">
-											<a href="/book?id=${book.id}" class="img img-2"
+											<a href="/books/detail?id=${book.id}" class="img img-2"
 												style="background-image: url(<c:url value='../pictures/books/${book.pictureUrl}'></c:url>);"></a>
 											<div class="text text-2 pl-md-4">
 												<h3 class="mb-2">
-													<a href="/book?id=${book.id}">${book.name}</a>
+													<a href="/books/detail?id=${book.id}">${book.name}</a>
 												</h3>
 
 												<div class="meta-wrap">

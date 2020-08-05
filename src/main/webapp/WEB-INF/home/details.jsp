@@ -30,30 +30,41 @@
 				<div class="container">
 					<div class="row d-flex">
 						<div class="col-lg-8 px-md-5 py-5">
-							<div class="row pt-md-4">
-<p>
-								<h1 class="mb-3">${book.name}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-									&nbsp; &nbsp;</h1>
-</p>
-								<br>
+							<div class="row pt-md-2">
+								<div class="col-10">
+									<h1 class="mb-3">${book.name}</h1>
+								</div>
+								<div class="col-2"></div>
 								<div class="meta-wrap">
 									<p class="meta">
 										<span><a href=""><i class="icon-calendar mr-2"></i>${book.year}</a></span>
-										<%-- 										<c:forEach begin="0" end="${book.stars}" varStatus="loop"> --%>
-										<!-- 											<i class="fas fa-star"></i> -->
-										<%-- 										</c:forEach> --%>
-										<span> <i class="fas fa-star"></i> <i
-											class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i>
-											<i class="far fa-star"></i> Stars
-										</span> <span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
+										<!-- STARS -->
+										<span class="mr-1"> <fmt:parseNumber
+												value="${book.stars}" var="whole" integerOnly="TRUE"
+												type="NUMBER"></fmt:parseNumber> <c:forEach begin="1"
+												end="${whole}" varStatus="loop">
+												<i class="fas fa-star"></i>
+											</c:forEach> <c:set var="half" value="0"></c:set> <c:if
+												test="${book.stars - whole >= .25 && book.stars - whole < .75}">
+												<i class="fas fa-star-half-alt"></i>
+												<c:set var="half" value="1"></c:set>
+											</c:if> <c:if test="${5- book.stars>=1}">
+												<c:forEach begin="${whole+half+1}" end="5" varStatus="loop">
+													<i class="far fa-star"></i>
+												</c:forEach>
+											</c:if> Stars
+										</span>
+										<!-- STARS -->
+										<span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
+										<!-- IMPLEMENTAR DESCARGA -->
 										<button type="button" class="btn btn-primary ml-4">Download
 											Here</button>
-
 									</p>
 								</div>
-								<div class="row mb-4" >
+								<div class="row mb-4">
 									<div class="col-lg-7">
-										<img src="../pictures/books/${book.pictureUrl}" alt=""
+										<img style="width: 400px;"
+											src="../pictures/books/${book.pictureUrl}" alt=""
 											class="img-fluid">
 									</div>
 									<div class="col-lg-4">
@@ -62,25 +73,24 @@
 
 									</div>
 								</div>
-								<br>
-								<div class="row">
-									<div class ="col-lg-4">
-										<p>${book.description}</p>
-									</div>
-									<div class ="col-lg-7"></div>
-								</div>
-
-								<div class="tag-widget post-tag-container mb-5 mt-5">
-									<div class="tagcloud">
-										<a href="#" class="tag-cloud-link">Life</a> <a href="#"
-											class="tag-cloud-link">Sport</a> <a href="#"
-											class="tag-cloud-link">Tech</a> <a href="#"
-											class="tag-cloud-link">Travel</a>
+								<!-- No es responsivo -->
+								<div class="row mb-4 w-100">
+									<div class="col-12 overflow-visible">
+										<p class="overflow-visible">${book.description}</p>
 									</div>
 								</div>
 
+								<!-- 								<div class="tag-widget post-tag-container mb-5 mt-5"> -->
+								<!-- 									<div class="tagcloud"> -->
+								<!-- 										<a href="#" class="tag-cloud-link">Life</a> <a href="#" -->
+								<!-- 											class="tag-cloud-link">Sport</a> <a href="#" -->
+								<!-- 											class="tag-cloud-link">Tech</a> <a href="#" -->
+								<!-- 											class="tag-cloud-link">Travel</a> -->
+								<!-- 									</div> -->
+								<!-- 								</div> -->
 
-								<div class="pt-5 mt-5">
+
+								<div class="pt-5">
 									<h3 class="mb-5 font-weight-bold">${book.reviews.size()}
 										Reviews</h3>
 									<ul class="comment-list">
@@ -88,9 +98,15 @@
 											<div class="vcard bio">
 												<img src="../frontImages/person_1.jpg"
 													alt="Image placeholder">
-											</div>
+											</div> <!-- 1ST COMMENT -->
 											<div class="comment-body">
-												<h3>John Doe</h3>
+												<h4>This book sucks</h4>
+												<p>
+													<i class="fas fa-star"></i><i class="far fa-star"></i><i
+														class="far fa-star"></i><i class="far fa-star"></i><i
+														class="far fa-star"></i> Stars
+												</p>
+												<h5>John Doe</h5>
 												<div class="meta">October 03, 2018 at 2:21pm</div>
 												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
 													elit. Pariatur quidem laborum necessitatibus, ipsam impedit
@@ -98,15 +114,52 @@
 													iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
 											</div>
 										</li>
+										<!-- 1ST COMMENT# -->
+										<c:forEach var="review" items="${book.reviews}">
+											<li class="comment">
+												<div class="vcard bio">
+													<img
+														src="../pictures/customers/${review.customer.avatarUrl}"
+														alt="Image placeholder">
+												</div> <!-- 1ST COMMENT -->
+												<div class="comment-body">
+													<h4>${review.title}</h4>
+													<!-- STARS -->
+													<span class="mr-1"> <fmt:parseNumber
+															value="${review.stars}" var="whole" integerOnly="TRUE"
+															type="NUMBER"></fmt:parseNumber> <c:forEach begin="1"
+															end="${whole}" varStatus="loop">
+															<i class="fas fa-star"></i>
+														</c:forEach> <c:set var="half" value="0"></c:set> <c:if
+															test="${review.stars - whole >= .25 && review.stars - whole < .75}">
+															<i class="fas fa-star-half-alt"></i>
+															<c:set var="half" value="1"></c:set>
+														</c:if> <c:if test="${5- review.stars>=1}">
+															<c:forEach begin="${whole+half+1}" end="5"
+																varStatus="loop">
+																<i class="far fa-star"></i>
+															</c:forEach>
+														</c:if> Stars
+													</span>
+													<!-- STARS -->
+													<h5>${review.customer}</h5>
+													<div class="meta">${review.date}</div>
+													<p>${review.content}</p>
+												</div>
+											</li>
+										</c:forEach>
 									</ul>
 									<!-- END comment-list -->
 
 									<div class="comment-form-wrap pt-5">
 										<h3 class="mb-5">Leave a review</h3>
-										<form action="#" class="p-3 p-md-5 bg-light">
+										<form id="reviewForm"
+											action="<c:url value='/books/detail?id=${book.id}'/>"
+											method="post" enctype="multipart/form-data"
+											class="p-3 p-md-5 bg-light">
 											<div class="form-group">
-												<label for="name">Title: </label> <input type="text"
-													class="form-control" id="name">
+												<label for="title">Title: </label> <input type="text"
+													class="form-control" id="title" name="title">
 											</div>
 											<div class="form-group">
 												<label>Stars: &nbsp;</label>
@@ -142,21 +195,22 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="message">Message</label>
-												<textarea name="" id="message" cols="30" rows="10"
+												<label for="content">Message</label>
+												<textarea name="content" id="content" cols="30" rows="10"
 													class="form-control"></textarea>
 											</div>
 											<div class="form-group">
-												<input type="submit" value="Post Comment"
+												<input type="submit" value="Post Review"
 													class="btn py-3 px-4 btn-primary">
 											</div>
-
+											<!-- IMPLEMENTAR FORMULARIO -->
 										</form>
 									</div>
 								</div>
 							</div>
 							<!-- END-->
 						</div>
+
 						<!-- 			SIDEBAR -->
 						<jsp:include page="../includes/sidebar.jsp" />
 						<!-- 			SIDEBAR #-->

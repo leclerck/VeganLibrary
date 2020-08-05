@@ -173,7 +173,7 @@
 												<td><c:choose>
 														<c:when test="${book.description.length()>=15}">
 															<c:out value="${book.description.substring(0,15)}" />
-															<a href="/book?id=${book.id}"> More...</a>
+															<a href="/books/detail?id=${book.id}"> More...</a>
 														</c:when>
 														<c:otherwise>
 															<c:out value="${book.description}" />

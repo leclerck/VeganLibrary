@@ -16,9 +16,7 @@ import cl.leclerck.service.BookService;
 public class HomeController {
 	
 	@Autowired
-	BookService bookService;
-	
-	
+	BookService bookService;	
 	
 	@GetMapping
 	public String index(ModelMap viewMap) {

@@ -88,5 +88,9 @@ public class BookController {
 	
 		return "home/details";
 	}
+	
+	/*
+	 * implementar carga de reviews
+	 */
 
 }
