@@ -4,29 +4,29 @@
 	data-ride="carousel">
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<img class="d-block w-100" src="../images/pie.jpg" alt="Pie">
+			<img class="w-100" src="../frontImages/pie.jpg" alt="Pie">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/plum.jpg"
+			<img class="d-block w-100" src="../frontImages/plum.jpg"
 				alt="Plum">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/smoothie.jpg"
+			<img class="d-block w-100" src="../frontImages/smoothie.jpg"
 				alt="Smoothie">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/market.jpg"
+			<img class="d-block w-100" src="../frontImages/market.jpg"
 				alt="Fruit market">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/olive-oil.jpg"
+			<img class="d-block w-100" src="../frontImages/olive-oil.jpg"
 				alt="Olive Oil and tomatoes">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/veg1.jpg" alt="Carrots and other vegetables">
+			<img class="d-block w-100" src="../frontImages/veg1.jpg" alt="Carrots and other vegetables">
 		</div>
 		<div class="carousel-item">
-			<img class="d-block w-100" src="../images/veg2.jpg" alt="Avocados an tomatoes">
+			<img class="d-block w-100" src="../frontImages/veg2.jpg" alt="Avocados an tomatoes">
 		</div>
 	</div>
 </div>

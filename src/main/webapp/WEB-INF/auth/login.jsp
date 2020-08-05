@@ -9,13 +9,12 @@
 </head>
 
 <body>
-
 	<div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<h3>Log in</h3>
-				<form>
+				<form action="/login" method="post">
 					<div class="form-group">
 						<label for="exampleUsername">Username</label> <input type="text"
 							class="form-control" id="exampleUsername"
@@ -27,14 +26,14 @@
 							placeholder="Password">
 					</div>
 					<button type="submit" class="btn btn-primary">Log in</button>
-					<a href="../signin">or click here to sign in</a>
+					<a href="/auth/signin">or click here to sign in</a>
 				</form>
 			</nav>
 
 
-			<!-- 			FOOTER -->
-			<jsp:include page="../includes/footer.jsp" />
-			<!-- 			FOOTER #-->
+		<!-- 			FOOTER -->
+		<jsp:include page="../includes/footer.jsp" />
+		<!-- 			FOOTER #-->
 		</aside>
 		<!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">

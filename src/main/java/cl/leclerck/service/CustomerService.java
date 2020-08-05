@@ -1,6 +1,7 @@
 package cl.leclerck.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +33,30 @@ public class CustomerService {
     
     public Customer signIn(Customer customer, MultipartFile file) {
         logger.info("Signing in customer: " + customer.toString());
-        String fileName = fileUtils.uploadFile(file);
-        customer.setAvatarUrl(fileName);
-        customer.setId(null);
-        return dao.save(customer);
+        
+        if(dao.findByUsername(customer.getUsername()).orElse(null)!=null){
+        	logger.warn("That username is already taken");
+        }else {
+        	String fileName = fileUtils.uploadFile(file);
+            customer.setAvatarUrl(fileName);
+            customer.setId(null);
+        	return dao.save(customer);
+        } 
+        
+        return null;
+    }
+    public Customer signIn(Customer customer) {
+    	logger.info("Signing in customer: " + customer.toString());
+    	
+    	if(dao.findByUsername(customer.getUsername()).orElse(null)!=null){
+    		logger.warn("That username is already taken");
+    	}else {
+    		customer.setAvatarUrl("defaultUserIcon.png");
+    		customer.setId(null);
+    		return dao.save(customer);
+    	} 
+    	
+    	return customer;
     }
     
     public Customer search(Integer id) {
@@ -69,6 +90,13 @@ public class CustomerService {
         customer.setAvatarUrl(nombreArchivo);
 
         return dao.save(customer);
+    }
+    
+    public String  searchByUsername(String name ) {
+    	Optional<Customer> customer = Optional.empty();
+    	customer = dao.findByUsername( name );
+    	String username = customer.get().getUsername();
+    	return username; 
     }
     
 }

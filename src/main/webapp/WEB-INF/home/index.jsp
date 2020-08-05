@@ -28,6 +28,10 @@
 				<div class="container">
 					<div class="row d-flex">
 						<div class="col-xl-8 py-5 px-md-5">
+						
+						<div class="alert alert-info" role="alert">Logged in as: 
+						<c:out value="${username}"></c:out>
+						</div>
 							<div class="row pt-md-4">
 
 								<div class="col-md-12">

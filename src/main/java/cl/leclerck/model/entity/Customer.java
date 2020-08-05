@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import cl.leclerck.config.EncoderUtils;
 //import cl.leclerck.config.EncoderUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,17 +36,17 @@ public class Customer {
 	@Setter @Getter private String avatarUrl;
 	
 	
-	@Setter @Getter private Role roles;
+	@Setter @Getter private Role role;
 
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
 	@Setter @Getter private List<Review> reviews;
  
     public void setPassword(String password) {
-    //    this.password = EncoderUtils.passwordEncoder().encode(password);
+        this.password = EncoderUtils.passwordEncoder().encode(password);
     }
     
     public String toJson() {
-        Customer aux = new Customer(id, username, email, password, avatarUrl, roles, reviews);
+        Customer aux = new Customer(id, username, email, password, avatarUrl, role, reviews);
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = null;
         try {

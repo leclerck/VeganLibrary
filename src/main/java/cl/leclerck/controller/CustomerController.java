@@ -32,11 +32,6 @@ public class CustomerController {
 
         return "admin/customerMaintainer";
     }
-
-	@GetMapping("/signin")
-	public String showSignIn() {
-		return "customer/signin";
-	}
 	
 
 	
@@ -56,7 +51,7 @@ public class CustomerController {
         return "redirect:/customers";
     }
 	
-	@PostMapping
+	@PostMapping("/signin")
     public String signIn(
         RedirectAttributes attributes,
         @ModelAttribute Customer customer, 
