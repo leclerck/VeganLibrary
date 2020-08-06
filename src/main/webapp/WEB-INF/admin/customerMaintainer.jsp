@@ -78,8 +78,8 @@
 							</c:if>
 
 							<h3>Customer sign in</h3>
-							<form id="form" action="<c:url value='/customers'/>" method="post"
-								enctype="multipart/form-data">
+							<form id="form" action="<c:url value='/customers'/>"
+								method="post" enctype="multipart/form-data">
 								<div class="form-group row">
 									<label for="avatar" class="col-sm-2 col-form-label">Profile
 										Picture </label>
@@ -143,9 +143,15 @@
 												class="rounded" alt="${customer.avatarUrl}" /></td>
 											<td>${customer.username}</td>
 											<td>${customer.email}</td>
-											<td>${customer.password}</td>
-											<td><a
-												href='javascript:update(${customer.toJson()})'>Update</a>
+											<td><c:choose>
+													<c:when test="${customer.password.length()>=15}">
+														<c:out value="${customer.password.substring(0,15)}..." />
+													</c:when>
+													<c:otherwise>
+														<c:out value="${customer.password}" />
+													</c:otherwise>
+												</c:choose></td>
+											<td><a href='javascript:update(${customer.toJson()})'>Update</a>
 												| <a href='javascript:delete_(${customer.toJson()})'>Delete</a>
 											</td>
 										</tr>

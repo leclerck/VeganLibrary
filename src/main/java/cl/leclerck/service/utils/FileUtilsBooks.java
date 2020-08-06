@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUtilsBooks {
 	private final Logger logger = LoggerFactory.getLogger(FileUtilsBooks.class);
     private static final String IMG_PATH = "src/main/resources/static/pictures/books/";
+    private static final String FILE_PATH = "src/main/resources/static/books/";
     
 
     private String nameFile(MultipartFile file) {
@@ -27,7 +28,7 @@ public class FileUtilsBooks {
      * el nombre del archivo subido, para poder
      * cargarlo en una base de datos.
      */
-    public String uploadFile(MultipartFile file) {
+    public String uploadPicture(MultipartFile file) {
         String newName = nameFile(file);
         String picturePath = IMG_PATH + File.separator + newName;
 
@@ -43,9 +44,29 @@ public class FileUtilsBooks {
 
         return newName;
     }
+    public String uploadFile(MultipartFile file) {
+    	String newName = nameFile(file);
+    	String filePath = FILE_PATH + File.separator + newName;
+    	
+    	// ruta completa del archivo
+    	Path path = Paths.get(filePath);
+    	try {
+    		byte[] fileBytes = file.getBytes();
+    		Files.write(path, fileBytes);
+    		logger.info("Saved file: " + filePath);
+    	} catch (IOException e) {
+    		logger.error(e.getMessage());
+    	}
+    	
+    	return newName;
+    }
 
     public boolean deleteFileByName(String name) {
-        File file = new File(IMG_PATH + File.separator + name);
+        File file = new File(FILE_PATH + File.separator + name);
         return file.delete();
+    }
+    public boolean deletePictureByName(String name) {
+    	File file = new File(IMG_PATH + File.separator + name);
+    	return file.delete();
     }
 }

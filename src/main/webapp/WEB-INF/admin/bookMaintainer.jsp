@@ -90,6 +90,14 @@
 									</div>
 								</div>
 								<div class="form-group row">
+									<label for="file" class="col-sm-2 col-form-label">File
+									</label>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-8">
+										<input type="file" class="form-control" id="file" name="file">
+									</div>
+								</div>
+								<div class="form-group row">
 									<label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8">
@@ -146,6 +154,7 @@
 										<tr>
 											<th scope="col">Id</th>
 											<th scope="col">Picture</th>
+											<th scope="col">File</th>
 											<th scope="col">ISBN</th>
 											<th scope="col">Name</th>
 											<th scope="col">Year</th>
@@ -165,6 +174,7 @@
 												<td><img width="100" height="100"
 													src="<c:url value='../pictures/books/${book.pictureUrl}'></c:url>"
 													class="rounded" alt="${book.pictureUrl}" /></td>
+												<td><c:url value='${book.fileUrl}'></c:url></td>
 												<td>${book.isbn}</td>
 												<td>${book.name}</td>
 												<td>${book.year}</td>
@@ -260,6 +270,9 @@
 			const input002 = form.genElement002
 			if(input002)
 				input002.remove();
+			const input003 = form.genElement003
+			if(input003)
+				input003.remove();
 
 			// creamos dos input escondidos, con el resto
 			// de los atributos que necesitaremos para
@@ -276,9 +289,16 @@
 			input_picture_url.value = book.pictureUrl
 			input_picture_url.id = 'genElement002'
 
+			const input_file_url = document.createElement('input')
+			input_file_url.type = 'hidden'
+			input_file_url.name = 'fileUrl'
+			input_file_url.value = book.fileUrl
+			input_file_url.id = 'genElement003'
+
 			// agregamos estos campos creados al formulario
 			form.appendChild(input_id);
 			form.appendChild(input_picture_url);
+			form.appendChild(input_file_url);
 			// adaptamos el botón a una actualización
 			// lo capturamos por su id
 			form.button.textContent = 'Update'

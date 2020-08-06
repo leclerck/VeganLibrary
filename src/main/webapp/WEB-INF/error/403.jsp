@@ -5,6 +5,7 @@
 <html lang="en">
 
 <head>
+<title>Vegan Library - Error</title>
 <!-- 			HEAD -->
 <jsp:include page="../includes/head.jsp" />
 <!-- 			HEAD #-->
@@ -35,7 +36,6 @@
 					<div class="row d-flex">
 						<div class="col-xl-8 py-5 px-md-5">
 							<div class="row pt-md-4">
-								<!--1er POST-->
 								<div class="d-flex justify-content-center align-items-center"
 									id="main">
 									<h1
@@ -43,16 +43,14 @@
 									<div class="inline-block align-middle">
 										<h2 class="font-weight-normal lead" id="desc">Forbidden</h2>
 									</div>
+									<form>
+										<input type="button" class="btn btn-primary" value="Go back"
+											onclick="history.back()">
+									</form>
 								</div>
-								<!--1er POST-->
 							</div>
 							<!-- END-->
-							
 						</div>
-						<!-- 			SIDEBAR -->
-						<jsp:include page="../includes/sidebar.jsp" />
-						<!-- 			SIDEBAR #-->
-
 					</div>
 				</div>
 			</section>

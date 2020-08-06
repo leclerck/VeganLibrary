@@ -34,12 +34,13 @@ public class Book {
 	double stars;
 	String description;
 	String pictureUrl;
+	String fileUrl;
 
 	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<Review> reviews;
 	
 	public String toJson() {
-        Book aux = new Book(id, isbn, name, year, author, stars, description, pictureUrl, reviews);
+        Book aux = new Book(id, isbn, name, year, author, stars, description, pictureUrl, fileUrl, reviews);
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = null;
         try {

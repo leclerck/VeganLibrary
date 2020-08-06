@@ -20,7 +20,7 @@ padding-top: 2em !important;
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 			<nav id="colorlib-main-menu" role="navigation">
 				<h3>Sign in</h3>
-				<form>
+				<form action="/signin" method="post">
 					<div class="form-group row">
 						<label for="inputUsername" class="col-sm-2 col-form-label">Profile
 							Picture</span>

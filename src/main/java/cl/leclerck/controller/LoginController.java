@@ -1,5 +1,6 @@
 package cl.leclerck.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ public class LoginController {
         @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
             viewMap.put("error", true);
-
         }
 
         return "/auth/login";
@@ -27,11 +27,16 @@ public class LoginController {
         return "error/403";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/goLogout")
     public String showLogOut() {
-        return "login/logout";
+        return "auth/logout";
     }
-
+    
+    @GetMapping("/logout")
+    public String logOut() {
+    SecurityContextHolder.getContext().setAuthentication(null);
+    return "auth/login";
+    }
     @GetMapping("/signin")
     public String showSignIn() {
         return "auth/signin";

@@ -31,6 +31,16 @@
 					<div class="row d-flex">
 						<div class="col-lg-8 px-md-5 py-5">
 							<div class="row pt-md-2">
+								<c:if test="${not empty message}">
+									<div class="alert alert-info alert-dismissible fade show"
+										role="alert">
+										<strong>Done!</strong> ${message}
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+								</c:if>
 								<div class="col-10">
 									<h1 class="mb-3">${book.name}</h1>
 								</div>
@@ -73,7 +83,6 @@
 
 									</div>
 								</div>
-								<!-- No es responsivo -->
 								<div class="row mb-4 w-100">
 									<div class="col-12 overflow-visible">
 										<p class="overflow-visible">${book.description}</p>
@@ -124,6 +133,7 @@
 												</div> <!-- 1ST COMMENT -->
 												<div class="comment-body">
 													<h4>${review.title}</h4>
+
 													<!-- STARS -->
 													<span class="mr-1"> <fmt:parseNumber
 															value="${review.stars}" var="whole" integerOnly="TRUE"
@@ -142,6 +152,7 @@
 														</c:if> Stars
 													</span>
 													<!-- STARS -->
+
 													<h5>${review.customer}</h5>
 													<div class="meta">${review.date}</div>
 													<p>${review.content}</p>
@@ -150,13 +161,12 @@
 										</c:forEach>
 									</ul>
 									<!-- END comment-list -->
-
+									<!-- FORM -->
 									<div class="comment-form-wrap pt-5">
 										<h3 class="mb-5">Leave a review</h3>
 										<form id="reviewForm"
 											action="<c:url value='/books/detail?id=${book.id}'/>"
-											method="post" enctype="multipart/form-data"
-											class="p-3 p-md-5 bg-light">
+											method="post" class="p-3 p-md-5 bg-light">
 											<div class="form-group">
 												<label for="title">Title: </label> <input type="text"
 													class="form-control" id="title" name="title">
@@ -206,6 +216,7 @@
 											<!-- IMPLEMENTAR FORMULARIO -->
 										</form>
 									</div>
+									<!-- FORM -->
 								</div>
 							</div>
 							<!-- END-->

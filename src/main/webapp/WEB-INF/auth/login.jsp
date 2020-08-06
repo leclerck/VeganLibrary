@@ -19,11 +19,11 @@
 				<form action="/login" method="post">
 
 					<div class="form-group">
-						<label for="exampleUsername">Username</label> 
+						<label for="username">Username</label> 
 						<input type="text"
 							id="username" name="username"
 							class="form-control"
-							aria-describedby="emailHelp" placeholder="enter your password..." />
+							 placeholder="Enter your username" />
 					</div>
 
 					<div class="form-group">
@@ -31,7 +31,7 @@
 						<input
 							id="password" name="password"
 							type="password" class="form-control"
-							placeholder="enter your password... ">
+							placeholder="Enter your password">
 					</div>
 
 					<button type="submit" class="btn btn-primary">Log in</button>

@@ -11,14 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import cl.leclerck.model.dao.CustomerDao;
-import cl.leclerck.model.entity.Book;
 import cl.leclerck.model.entity.Customer;
-import cl.leclerck.service.utils.FileUtilsBooks;
 import cl.leclerck.service.utils.FileUtilsCustomers;
 
 @Service
 public class CustomerService {
-	private final Logger logger = LoggerFactory.getLogger(BookService.class);
+	private final Logger logger = LoggerFactory.getLogger(CustomerService.class);
 
     @Autowired
     private CustomerDao dao;
@@ -51,7 +49,8 @@ public class CustomerService {
     	if(dao.findByUsername(customer.getUsername()).orElse(null)!=null){
     		logger.warn("That username is already taken");
     	}else {
-    		customer.setAvatarUrl("defaultUserIcon.png");
+    		if(customer.getAvatarUrl()==null)
+    			customer.setAvatarUrl("defaultUserIcon.png");
     		customer.setId(null);
     		return dao.save(customer);
     	} 
@@ -82,11 +81,8 @@ public class CustomerService {
 
     public Customer update(Customer customer, MultipartFile file) {
     	Customer previousBook = dao.findById(customer.getId()).orElse(null);
-        // eliminamos la imagen anterior
     	fileUtils.deleteFileByName(previousBook.getAvatarUrl());
-        // subimos la nueva
         String nombreArchivo = fileUtils.uploadFile(file);
-        // actualizamos el registro en la base de datos
         customer.setAvatarUrl(nombreArchivo);
 
         return dao.save(customer);

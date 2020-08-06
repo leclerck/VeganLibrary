@@ -1,5 +1,7 @@
 package cl.leclerck.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,83 +16,87 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cl.leclerck.model.entity.Book;
+import cl.leclerck.model.entity.Review;
 import cl.leclerck.service.BookService;
+import cl.leclerck.service.ReviewService;
 
 @Controller
 @RequestMapping("/books")
 public class BookController {
+
+	@Autowired
+	private BookService bookService;
 	
 	@Autowired
-    private BookService service;
-	
+	private ReviewService reviewService;
+
 	@GetMapping
-    public String home(
-        @ModelAttribute("message") String message, 
-        ModelMap map
-    ) {
-        if(message != null)
-            map.put("message", message);
-        map.put("books", service.getAll());
+	public String home(@ModelAttribute("message") String message, ModelMap map) {
+		if (message != null)
+			map.put("message", message);
+		map.put("books", bookService.getAll());
 
-        return "admin/bookMaintainer";
-    }
-	
+		return "admin/bookMaintainer";
+	}
+
 	@PostMapping("/update")
-    public String update(
-        ModelMap map,
-        RedirectAttributes attributes,
-        @ModelAttribute Book book	, 
-        @RequestParam(name = "picture", required = false) MultipartFile file) {
-        if(file.isEmpty())
-            service.update(book);
-        else
-            service.update(book, file);
-        
-        attributes.addFlashAttribute("message", "Book updated");
-        
-        return "redirect:/books";
-    }
-	
+	public String update(ModelMap map, RedirectAttributes attributes, @ModelAttribute Book book,
+			@RequestParam(name = "picture", required = false) MultipartFile file) {
+		if (file.isEmpty())
+			bookService.update(book);
+		else
+			bookService.update(book, file);
+
+		attributes.addFlashAttribute("message", "Book updated");
+
+		return "redirect:/books";
+	}
+
 	@PostMapping
-    public String register(
-        RedirectAttributes attributes,
-        @ModelAttribute Book book, 
-        @RequestParam("picture") MultipartFile file) {
-        Book responseBook = service.register(book, file); 
-        
-        attributes.addFlashAttribute(
-            "message", 
-            "Book " 
-            + responseBook.getName()
-            + " registered."
-        );
+	public String register(RedirectAttributes attributes, @ModelAttribute Book book,
+			@RequestParam("picture") MultipartFile picture, @RequestParam("file") MultipartFile file) {
+		Book responseBook = bookService.register(book, picture, file);
 
-        return "redirect:/books";
-    }
+		attributes.addFlashAttribute("message", "Book " + responseBook.getName() + " registered.");
 
-    @GetMapping(value = "/delete")
-    public String delete(
-        @RequestParam Integer id, 
-        RedirectAttributes attributes) {
-        Book book = service.search(id);
-        service.delete(book);
-        String message = "Book: " + book.getName() + " deleted";
-        attributes.addFlashAttribute("message", message);
+		return "redirect:/books";
+	}
 
-        return "redirect:/books";
-    }
-    
+	@GetMapping(value = "/delete")
+	public String delete(@RequestParam Integer id, RedirectAttributes attributes) {
+		Book book = bookService.search(id);
+		bookService.delete(book);
+		String message = "Book: " + book.getName() + " deleted";
+		attributes.addFlashAttribute("message", message);
+
+		return "redirect:/books";
+	}
+
 	@GetMapping("/detail")
 	public String showBook(@RequestParam("id") int idBook, Model model) {
-		//book?id
-		Book book = service.search(idBook);
-		model.addAttribute("book",book);
-	
+		Book book = bookService.search(idBook);
+		model.addAttribute("book", book);
+
 		return "home/details";
 	}
-	
+
 	/*
 	 * implementar carga de reviews
 	 */
-
+	@PostMapping("/detail?id={book.id}")
+	public String postReview(@ModelAttribute("message") String message, ModelMap viewMap, RedirectAttributes attributes,
+			@ModelAttribute Review review, @RequestParam("id") int idBook) {
+//		reviewService.postReview(review);
+		Book book = bookService.search(idBook);
+		List<Review>bookReviews = book.getReviews();
+//		viewMap.put("reviews", bookReviews);
+			
+//		attributes.addAttribute("id", book.getId()).addFlashAttribute("message", "Your review was posted");
+		
+		if (message != null)
+			viewMap.put("message", message);
+		viewMap.put("reviews", bookReviews);		
+		
+		return "/books/detail?id=${idBook}";
+	}
 }

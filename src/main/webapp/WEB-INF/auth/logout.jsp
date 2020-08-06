@@ -24,7 +24,7 @@ body {
 			<div class="card-body">
 				<h1 class="text-dark">Are you sure you want to log
 					out?</h1>
-				<button type="button" class="btn btn-info btn-block ">Log Out</button>
+				<a href="logout"><button type="button" class="btn btn-info btn-block ">Log Out</button></a>
 			</div>
 		</div>
 		<div class="col-4"></div>

@@ -3,7 +3,7 @@
 <nav id="colorlib-main-menu" role="navigation">
 	<ul>
 		<li class="colorlib-active"><a href="/">Home</a></li>
-		<li><a href="about">About</a></li>
-		<li><a href="auth/logout">Log Out</a></li>
+		<li><a href="/about">About</a></li>
+		<li><a href="/login/goLogout">Log Out</a></li>
 	</ul>
 </nav>
