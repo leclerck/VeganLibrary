@@ -29,19 +29,9 @@ class AppStartupRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		Customer customer = new Customer();
 		customer.setUsername("admin");
-//            customer.setEmail("admin@mail.com");
 		customer.setPassword("1234");
 		customer.setRole(Role.ROLE_ADMIN);
-
 		customerService.signIn(customer);
-
-//		customer.setUsername("user");
-//		customer.setEmail("user@mail.com");
-//		customer.setPassword("1234");
-//		customer.setRole(Role.ROLE_USER);
-//		customerService.signIn(customer, null);
-		
-		//Cargar libro aqui
 
 	}
 

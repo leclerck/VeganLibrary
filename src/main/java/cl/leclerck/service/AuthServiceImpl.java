@@ -15,11 +15,10 @@ import org.springframework.stereotype.Service;
 
 import cl.leclerck.model.dao.CustomerDao;
 import cl.leclerck.model.entity.Customer;
-import cl.leclerck.model.entity.Review;
 
 
 @Service
-public class AuthServiceImpl  implements UserDetailsService {
+public class AuthServiceImpl implements UserDetailsService {
     
     private Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
     
@@ -27,21 +26,18 @@ public class AuthServiceImpl  implements UserDetailsService {
     private CustomerDao customerDao;
 
     @Override
-    public UserDetails loadUserByUsername(String name)
+    public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-
-        Customer customer = customerDao.findByUsername(name).orElse(null);
+        
+        Customer customer = customerDao.findByUsername(username).orElse(null);
+        
         User user = null;
         
         if(customer != null) {
             String role = customer.getRole().toString();
             String username_ = customer.getUsername();
             String password_ = customer.getPassword();
-//            String email    = customer.getEmail();
-//            String avatarUrl = customer.getAvatarUrl();
-//            List<Review> reviews = customer.getReviews();
-            logger.warn("Customer found, username: " + name);
-           
+            logger.warn("Customer found, username: " + username);
             
             // agregamos el rol a la lista de roles
             List<SimpleGrantedAuthority> roles = Arrays.asList(new SimpleGrantedAuthority(role));
@@ -49,7 +45,7 @@ public class AuthServiceImpl  implements UserDetailsService {
             user = new User(username_, password_, roles);
            
         }else {
-            logger.warn("Customer couldn't be found :" + name);
+            logger.warn("Customer couldn't be found :" + username);
         }
         
         return user;
