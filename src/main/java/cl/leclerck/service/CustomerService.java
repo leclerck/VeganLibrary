@@ -37,7 +37,6 @@ public class CustomerService {
         }else {
         	String fileName = fileUtils.uploadFile(file);
             customer.setAvatarUrl(fileName);
-            customer.setId(null);
         	return dao.save(customer);
         } 
         

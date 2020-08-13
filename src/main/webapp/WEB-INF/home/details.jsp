@@ -67,8 +67,8 @@
 										<!-- STARS -->
 										<span><a href=""><i class="icon-comment2 mr-2"></i>${book.reviews.size()}</a></span>
 										<!-- IMPLEMENTAR DESCARGA -->
-										<button type="button" class="btn btn-primary ml-4">Download
-											Here</button>
+										<a href="/books/${book.fileUrl}" download><button type="button" class="btn btn-primary ml-4">Download
+											Here</button></a>
 									</p>
 								</div>
 								<div class="row mb-4">

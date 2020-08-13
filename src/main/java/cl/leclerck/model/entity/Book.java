@@ -1,5 +1,6 @@
 package cl.leclerck.model.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;

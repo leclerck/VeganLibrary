@@ -1,5 +1,7 @@
 package cl.leclerck;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -8,10 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
 import cl.leclerck.model.entity.Book;
+import cl.leclerck.model.entity.BookCustomer;
 import cl.leclerck.model.entity.Customer;
+import cl.leclerck.model.entity.Review;
 import cl.leclerck.model.entity.Role;
 import cl.leclerck.service.BookService;
 import cl.leclerck.service.CustomerService;
+import cl.leclerck.service.ReviewService;
 
 @SpringBootApplication
 public class BibliotecaApplication {
@@ -29,9 +34,17 @@ class AppStartupRunner implements ApplicationRunner {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private ReviewService reviewService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		
+		Date date1 = new Date(12/06/2020);
+		Date date2 = new Date(22/07/2020);
+		Date date3 = new Date(9/05/2020);
+		
 		Customer admin = new Customer();
 		admin.setUsername("admin");
 		admin.setEmail("admin@hola.cl");
@@ -39,13 +52,21 @@ class AppStartupRunner implements ApplicationRunner {
 		admin.setRole(Role.ROLE_ADMIN);
 		customerService.signIn(admin);
 
-		Customer customer = new Customer();
-		customer.setUsername("vale");
-		customer.setPassword("0000");
-		customer.setRole(Role.ROLE_USER);
-		customer.setEmail("vale@hola.cl");
-		customer.setAvatarUrl("cute96.jpg");
-		customerService.signIn(customer);
+		Customer customer1 = new Customer();
+		customer1.setUsername("vale");
+		customer1.setPassword("0000");
+		customer1.setRole(Role.ROLE_USER);
+		customer1.setEmail("vale@hola.cl");
+		customer1.setAvatarUrl("cute96.jpg");
+		customerService.signIn(customer1);
+		
+		Customer customer2 = new Customer();
+		customer2.setUsername("dani");
+		customer2.setPassword("9876");
+		customer2.setRole(Role.ROLE_USER);
+		customer2.setEmail("dani@hola.cl");
+		customer2.setAvatarUrl("geest1.jpg");
+		customerService.signIn(customer2);
 
 		Book book1 = new Book();
 		book1.setAuthor("Deborah Madison");
@@ -56,6 +77,7 @@ class AppStartupRunner implements ApplicationRunner {
 		book1.setName("Vegetarian Cooking for Everyone");
 		book1.setPictureUrl("vegetarianCooking.jpg");
 		book1.setYear(2007);
+
 		bookService.register(book1);
 
 		Book book2 = new Book();
@@ -68,7 +90,52 @@ class AppStartupRunner implements ApplicationRunner {
 		book2.setPictureUrl("whywe.jpg");
 		book2.setYear(2011);
 		bookService.register(book2);
-
+		
+		Book book3 = new Book();
+		book3.setAuthor("Frances Moore Lappe");
+		book3.setDescription("Aliquam eleifend blandit felis, vehicula volutpat tellus imperdiet eleifend. Cras aliquam semper lacus bibendum maximus. Sed vitae viverra augue, nec lacinia mi. Donec nec volutpat velit. Proin dignissim justo vitae erat pellentesque, sit amet porttitor sapien tristique. Aliquam eu sapien nisi. Ut lacinia metus nec nulla volutpat, at pretium augue dictum. Curabitur mattis ligula ut nisl laoreet, quis semper elit hendrerit.");
+		book3.setFileUrl("diet-for-a-small-planet.pdf");
+		book3.setIsbn("978-0-307-75453-0");
+		book3.setName("Diet for a small planet");
+		book3.setPictureUrl("DietForASmallPlanet.jpg");
+		book3.setYear(1991);
+		bookService.register(book3);
+		
+		BookCustomer bc1 = new BookCustomer();
+		bc1.setBook(book1.getId());
+		bc1.setCustomer(customer1.getId());
+		
+		BookCustomer bc2 = new BookCustomer();
+		bc2.setBook(book2.getId());
+		bc2.setCustomer(customer2.getId());
+		
+		BookCustomer bc3 = new BookCustomer();
+		bc3.setBook(book2.getId());
+		bc3.setCustomer(customer2.getId());
+		
+		Review review1 = new Review();
+		review1.setContent("Morbi iaculis eleifend interdum. Suspendisse eget vulputate lorem, ac blandit purus. Vivamus dapibus lectus ac convallis scelerisque. Maecenas mauris ex, congue vel felis eu, suscipit eleifend odio. Aliquam sollicitudin sem quam, aliquet gravida orci dictum et. Nunc varius pharetra diam, lacinia laoreet ex aliquam id. Cras sed egestas elit, sed vulputate nunc. Curabitur leo enim, lacinia at fringilla in, dictum eu velit. Mauris et neque lorem.");
+		review1.setDate(date1);
+		review1.setStars(4.0);
+		review1.setTitle("It was great");
+		reviewService.addReview(bc1, review1);
+		reviewService.postReview(review1,bc1);
+		
+		Review review2 = new Review();
+		review2.setContent("Quisque at malesuada nunc. Aliquam arcu nisl, porta vel est eu, lacinia accumsan sem. Sed sapien turpis, dictum non tempor tempor, tristique et risus. Nunc vehicula congue massa, in tempus enim. Nunc nec ipsum sit amet dolor laoreet maximus. Quisque a sapien dui. Pellentesque eu turpis vel felis gravida blandit. Phasellus nec malesuada felis. Quisque sit amet lacinia purus. Vestibulum quam erat, feugiat sit amet ipsum ut, sodales ultricies libero. Aliquam mollis semper magna, ac luctus odio bibendum quis.");
+		review2.setDate(date2);
+		review2.setStars(3.0);
+		review2.setTitle("Not so good");
+		reviewService.addReview(bc2, review2);
+		reviewService.postReview(review2,bc2);
+		
+		Review review3 = new Review();
+		review3.setContent("Suspendisse sit amet aliquam nunc. Sed eu lobortis erat, nec laoreet magna. Quisque eget euismod felis. Suspendisse eget nulla faucibus, consectetur odio et, pellentesque tortor. Phasellus finibus ut turpis vitae finibus. Suspendisse potenti. Nunc pretium sapien tellus, vel dignissim risus commodo non. Duis est ex, porta sed eros non, aliquet efficitur sapien. ");
+		review3.setDate(date3);
+		review3.setStars(4.7);
+		review3.setTitle("A great experience");
+		reviewService.postReview(review3,bc3);
+		reviewService.addReview(bc3, review3);
 	}
 
 }
